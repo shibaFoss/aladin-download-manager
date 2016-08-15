@@ -1,2 +1,4 @@
-# Aladin-DM
-The open sourced version of Aladin Download Manager
+# Aladin Download Manager
+Hi guys, I want to build a free download manager app for android, that is both simple to use and advanced in feature. The app is already got built and available on [Play Store](http://bit.ly/1R7RVmf). But the app on Play Store right now is not very user friendly and limited in some advanced features. So I decided to start over with a better design.
+
+After I complete the beta version of this free project, It will be available from the current google play store link. Note : This is one of my part time projects and may take longer to complete the beta version, but any suggestion or feedback is welcome.  
