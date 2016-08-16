@@ -1,3 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Aladin DM</string>
+    <string name="app_name_short">Aladin DM</string>
+
+    <string name="save">Save</string>
+    <string name="menu">Menu</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="download_manager">Download Manager</string>
+
+    <string name="settings">Settings</string>
+    <string name="legal">Legal Information</string>
+    <string name="exit">Exit</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="setting">Settings</string>
+    <string name="something">Something</string>
+    <string name="ok">OK</string>
+    <string name="youtube">Youtubevideo with nacryty.mp4</string>
+    <string name="url">Url</string>
+    <string name="name">Name</string>
+    <string name="add">ADD</string>
+    <string name="downloading">Downloading</string>
+    <string name="downloaded">Downloaded</string>
+    <string name="qualities">Video Qualities</string>
+    <string name="video">Video</string>
+    <string name="save_video">SAVE VIDEOS</string>
+    <string name="videos">(0)</string>
+    <string name="download">Download</string>
+    <string name="copy_url">Copy Url </string>
+    <string name="add_bookmark">Add Bookmark</string>
+    <string name="share">Share</string>
+    <string name="add_download">New Download</string>
+    <string name="home">Home</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="you_have_a_clean_bookmark">You have a clean bookmark</string>
+    <string name="itTimeToAddSomeBookmarkToList">Press the
+        <b>+ button</b>
+        at the bottom.
+    </string>
+    <string name="folder_picker">Folder Picker</string>
+    <string name="download_path">/sdcard/Aladin DM</string>
+    <string name="___">. . . . .</string>
+    <string name="cancel">Cancel</string>
+    <string name="new_folder">New</string>
+    <string name="loading">Loading .....</string>
+    <string name="enabled">Enabled</string>
+    <string name="back_it_up">Back-It-Up-HD (Mp4)</string>
+
+
+    <string name="social_media_like">Fb &amp; Twitter</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="restart">Restart</string>
+    <string name="detail">Details</string>
+    <string name="refresh_link">Refresh link</string>
+    <string name="force_assemble">Force assemble</string>
+    <string name="search">Search</string>
+    <string name="yes_please">YES PLEASE</string>
+    <string name="share_with_friends_message">" is awesome. Would you like to take a moment to share it with your friends ?"
+    </string>
+    <string name="your_feedback">Your feedback</string>
+    <string name="send_device_information">Send device information</string>
+    <string name="bookmark_editor">Bookmark Editor</string>
+    <string name="link">Link</string>
+    <string name="download_title">Download Title</string>
+    <string name="path_setting">Path Setting</string>
+    <string name="advance_settings">Advance Settings</string>
+    <string name="file_name">File name </string>
+    <string name="bookmark_url">Bookmark Url</string>
+    <string name="bookmark_name">Bookmark Name</string>
+
+
+    <string name="up">Up</string>
+    <string name="close">Close</string>
+    <string name="update_app_setting">Update app settings</string>
+    <string name="download_text_detail">[Downloading 252kb/4.49Kb]</string>
+    <string name="download_path_string">Download Directory</string>
+    <string name="file_size">File Size</string>
+    <string name="download_system_fail_message">download system could not be null.</string>
+    <string name="replace_download_link">Replace Download Link</string>
+    <string name="download_refresh_link_help_description">Replacing the download link is very useful if
+        the existing link is dead or outdated.
+    </string>
+    <string name="paste_download_link">Please paste the new link below</string>
+    <string name="file_size_not_matching_error">The file size of the entered link must be match with the old file
+        size.
+    </string>
+    <string name="url_unsupported_protocol_error">The entered URL must be of http or https protocol.</string>
+    <string name="congrat_message_link_saving">Congrats! the new link has replaced &amp; saved successfully.</string>
+    <string name="enable_catalog">Enable catalog</string>
+    <string name="download_detail">Download Detail</string>
+    <string name="file_path">File Path</string>
+    <string name="file_url">File Url</string>
+    <string name="replace">Replace</string>
+    <string name="replace_link">Replace Link</string>
+    <string name="download_option">Download Options</string>
+    <string name="download_parts">Download parts : </string>
+    <string name="number_of_buffer_size">Buffer size :</string>
+    <string name="enable_auto_resume">Enable auto resume</string>
+    <string name="enable_tts_notification">Enable TTS notification</string>
+    <string name="enable_smart_download">Enable smart download</string>
+    <string name="message_box">Message Box</string>
+    <string name="shareWithPopularApps">Share Aladin with....</string>
+    <string name="complete_option">File Options</string>
+    <string name="open">Open</string>
+    <string name="select">Select</string>
+    <string name="rename">Rename</string>
+    <string name="restartAgain">Restart</string>
+    <string name="remove_list">Remove list</string>
+    <string name="renameEditor">Rename Editor</string>
+    <string name="option">Option</string>
+    <string name="selectAll">Select all</string>
+    <string name="cancelSelection">Cancel</string>
+    <string name="totalTime">Total Time</string>
+    <string name="id">Download ID</string>
+    <string name="totalDownloadParts">Download Parts</string>
+    <string name="bookmark_option">Bookmark Options</string>
+    <string name="whatsApp">WhatsApp</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="other">Others App</string>
+    <string name="propertyDetail">Property Details</string>
+    <string name="deleteFromSdcard">Delete File</string>
+    <string name="removeTask">Remove Task</string>
+    <string name="download_error_found_message">Download Error found from Aladin DM. Please Check out.</string>
+    <string name="outdated_link_dialog_message">The file link has outdated. Please replace the file link with a new
+        one. Other wise it wont be able to complete the download.
+    </string>
+    <string name="file_url_cant_be_change_from_here">"File Url can not be change from here. Use \"Replace Link\"
+        instead. "
+    </string>
+    <string name="moving_file_wait">Moving the file…wait…</string>
+    <string name="error_found_try_later">Some error has found. Please try again later.</string>
+    <string name="force_assemble_complete">Force assemble is completed successfully.</string>
+    <string name="enable">Enable</string>
+    <string name="disable">Disable</string>
+    <string name="auto_resume">Auto Resume</string>
+    <string name="smart_download_parting">Smart Download</string>
+    <string name="file_catalog">File Cataloging</string>
+    <string name="tts_notification">TTS Notification</string>
+    <string name="kb_16">16 KB</string>
+    <string name="download_buffer_size">Download Buffer Size</string>
+    <string name="kb_1">1 KB</string>
+    <string name="kb_2">2 KB</string>
+    <string name="kb_3">3 KB</string>
+    <string name="kb_4">4 KB</string>
+    <string name="kb_8">8 KB</string>
+    <string name="maximum_running_download">Max Running Downloads</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="default_download_part">Download Parts</string>
+    <string name="_12">12</string>
+    <string name="pause_after_errors">Pause After Errors</string>
+    <string name="_121">121</string>
+    <string name="TotalNumberOfError">Total number of download errors</string>
+    <string name="progress_interval">Progress Interval</string>
+    <string name="sec_1">1 Sec</string>
+    <string name="sec_2">2 Sec</string>
+    <string name="sec_3">3 Sec</string>
+    <string name="searchGoogle">Search Google</string>
+    <string name="search_for_file">Search for any file</string>
+    <string name="turbo_booster">Turbo Booster</string>
+    <string name="onlyViaWifi">Only Via Wi-Fi</string>
+    <string name="AndroidStock">Android Stock</string>
+    <string name="user_agent">User Agent</string>
+    <string name="userAgentSingleLine">User Agent</string>
+    <string name="basic_download_settings">Basic Download Settings</string>
+    <string name="notificationSettings">Notification Settings</string>
+    <string name="icon_in_notification">Icon Notification</string>
+    <string name="vibrationIntercept">Vibration Intercept</string>
+    <string name="vibration">Vibration strength</string>
+    <string name="vibrationAfterNotification">Vibration For Notification</string>
+    <string name="moreSettings">More Settings</string>
+    <string name="resetAllSettingsDisc">Reset all of the application settings.</string>
+    <string name="reset_settings">Reset All Settings</string>
+
+    <string name="turnOffService">Exit Background Service</string>
+    <string name="kb_128">128 KB</string>
+    <string name="kb_64">64 KB</string>
+    <string name="kb_32">32 KB</string>
+    <string name="waiting_for_network">Waiting for network…</string>
+    <string name="openIncompleteFile">Open Incomplete file</string>
+    <string name="OptionForRunningTask">Options Of Running Download Task</string>
+    <string name="help_of_options_of_running_download_task">Select the options you like to see as the available options for running downloads.
+    </string>
+    <string name="running_download_options">Running Download Options</string>
+    <string name="middleButton">Middle</string>
+    <string name="javaScriptInBrowser">JavaScript In Browser</string>
+    <string name="browserSetting">Browser Settings</string>
+    <string name="loadImages">Load Images</string>
+    <string name="desktopMode">Desktop Mode</string>
+
+
+    <string name="changeAppLanguage">Change App Language</string>
+    <string name="bengali">Bengali</string>
+
+
+    <!-- Navigation Drawer String -->
+    <string name="fastAccessRoom">Fast Access Room</string>
+    <string name="appSettings">App Settings</string>
+    <string name="exitApplication">Exit Application</string>
+    <string name="likeUs">Like us</string>
+    <string name="english">English</string>
+    <string name="download_notification">Download Notification</string>
+    <string name="google">Google</string>
+    <string name="searchEngine">Search Engine</string>
+    <string name="bing">Bing</string>
+    <string name="duckduckgo">Duck Duck GO</string>
+    <string name="searchWeb">Search The Web</string>
+    <string name="ttsNotificationAfterDownload">TTS On Download Complete</string>
+    <string name="service_notification_removal">Service Notification Remove</string>
+    <string name="help_of_remove_notification">If enabled, the service notification will be removed after a period of
+        inactivity of the app.
+    </string>
+    <string name="help_of_auto_resume">If enabled, downloads will be resumed automatically after any error/break of
+        network connection.
+    </string>
+    <string name="help_of_smart_download">If enabled, the download system will automatically choose the number of downlaod parts for every downloads.
+    </string>
+    <string name="help_of_file_catalog">If enabled, the download will automatically put the download files to their relative
+        folders.
+    </string>
+    <string name="help_of_downlaod_buffer_size">Buffer size is used for determining how efficiently the downloads will
+        run.
+    </string>
+    <string name="help_of_max_running_download">Set the maximum number of downloads that can run
+        simultaneously.
+    </string>
+    <string name="help_of_max_download_part">Set the number of download parts that will be used by default.
+    </string>
+    <string name="help_of_pause_after_error">After the following number of errors, downloads will be paused
+        automatically.
+    </string>
+    <string name="help_of_ui_progress_interval">The time you select here will be used as the interval time for updating download progress.
+    </string>
+    <string name="help_of_auto_speed_control_mechanism">If enabled, the download system will use the turbo booster to
+        accelerate the download speed.
+    </string>
+    <string name="help_of_only_via_wifi">If enabled, without the wifi connection no download will run.</string>
+    <string name="help_of_user_agent">Sometimes it\'s necessary to set the right User Agent for any download.</string>
+    <string name="help_of_tts_notification">If enabled, after any download completion the app gives an TTS notification.
+    </string>
+    <string name="help_of_download_notification">If enabled, the download progress notification will be shown at the
+        status bar.
+    </string>
+    <string name="help_of_file_notification">If enabled, the notification icon will be changed depending on the
+        downloading file type.
+    </string>
+    <string name="help_of_javascript_browser">If enabled, the web browser will load Javascript.</string>
+    <string name="help_of_load_image">If enabled, the web browser will load images on web pages.</string>
+    <string name="help_of_desktop_mode">If enabled, the web browser will load the desktop version of every web site.
+    </string>
+    <string name="help_of_search_engine">Select one from the following that you like to use as the default search
+        engine.
+    </string>
+    <string name="sec_4">4 Sec</string>
+    <string name="sec_5">5 Sec</string>
+    <string name="tts_notification_with_file_name">TTS With File Name</string>
+    <string name="help_of_tts_with_name">If enabled, the download system will play the download completion TTS
+        notification sound with the download file name.
+    </string>
+    <string name="auto_service_notification_remove_timer">Service Notification Removal Time</string>
+    <string name="help_of_auto_service_remove_timer">After the following amounts of time the service notification will be removed
+        automatically.
+    </string>
+    <string name="total_time_in_min">Total time in minutes</string>
+    <string name="magic_configuration">Magic Configuration</string>
+    <string name="border">Border</string>
+    <string name="_2g">2G</string>
+    <string name="_3g">3G</string>
+    <string name="_4g">4G</string>
+    <string name="help_of_network_speed">Please select your network connection speed</string>
+    <string name="_100kb"><![CDATA[100KB/s]]></string>
+    <string name="_500kb"><![CDATA[500KB/s]]></string>
+    <string name="_above_1mb"><![CDATA[> 1MB/s]]></string>
+    <string name="optimize">Optimized</string>
+    <string name="auto_redirection_filter">Filter Redirected Links</string>
+    <string name="help_of_auto_redirection_url_filter">If enabled, the download system will auto filter the redirected
+        file link to the original url.</string>
+    <string name="_2g_network_connection">2G Network</string>
+    <string name="with">With</string>
+    <string name="not_now">Not now</string>
+    <string name="share_it">Share App</string>
+    <string name="file_link">File link</string>
+    <string name="create_new__folder">Create New Folder</string>
+    <string name="create">Create</string>
+    <string name="downloads">Downloads</string>
+    <string name="tool">Tool</string>
+    <string name="how_about_a_rating">How about giving us a 5 star rating on the Play Store?</string>
+    <string name="ok_sure">OK Sure</string>
+    <string name="no_thanks">No, Thanks</string>
+
+    <string name="would_you_mind_for_feedback">Would you mind giving us some feedback?</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="slash_screen">Slash Screen</string>
+
+
+    <string name="forward">Forward</string>
+    <string name="share_page">Share Page</string>
+    <string name="copy_page_url">Copy Url</string>
+    <string name="desktop_mode">Desktop Mode</string>
+    <string name="browsing_history">Browser History</string>
+    <string name="more_settings">More Settings</string>
+
+
+    <string name="enter_search_hint_dialog">Search or Address</string>
+    <string name="back">Back</string>
+    <string name="favorite_bookmark">Bookmark</string>
+    <string name="reload_or_stop">Stop or Reload</string>
+    <string name="wait_file_size_dialog">Please wait until server return the file size.</string>
+    <string name="file_name_editor">File Name Editor</string>
+    <string name="new_download">New download</string>
+    <string name="more_options">More Options</string>
+    <string name="delete_from_sdcard">Delete from Sdcard</string>
+    <string name="download_property">Download Properties</string>
+    <string name="property">Properties</string>
+    <string name="delete_file">Delete file</string>
+    <string name="remove">Remove</string>
+    <string name="open_file">Open file</string>
+    <string name="replace_link_small">Replace download link</string>
+    <string name="savefrom_video">Savefrom.net</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="welcome">Welcome</string>
+    <string name="share_with_downlaod_feed">Share with the world</string>
+    <string name="share_file">Share file</string>
+    <string name="download_directory">Download Directory</string>
+    <string name="download_parts_">Download Parts</string>
+    <string name="share_via_bluetooth">Share via Bluetooth</string>
+    <string name="how_may_i_help_you">How may I help you with?</string>
+    <string name="auto_download_part">Auto Download Parting</string>
+    <string name="auto_file_cataloging">Auto File Cataloging</string>
+    <string name="running_downloads">Running Downloads</string>
+    <string name="only_via_wifi">Download Via WIFI</string>
+    <string name="download_progress_interval">Download Progress Interval</string>
+    <string name="music_player">Music Station</string>
+    <string name="example_song_name">One bottle dance - yo yo honey singh(bossmobi).mp3</string>
+    <string name="lock">Lock</string>
+    <string name="new_password">New Password</string>
+    <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="retrograde">Retrograde</string>
+    <string name="sample_song_name">James Blake - Overgrown</string>
+    <string name="bossmobi">www.bossmobi.com</string>
+    <string name="file_cant_be_played">File can not be played.</string>
+    <string name="speed_dial">Speed Dial</string>
+    <string name="browser_user_agent">Browser User Agent</string>
+    <string name="top_sites">Top Sites</string>
+    <string name="discover">Discover</string>
+    <string name="trending">Trending</string>
+    <string name="_34543_mp4">454454.mp4</string>
+    <string name="video_thumb">Video thumb</string>
+    <string name="videos_">Videos</string>
+    <string name="_0_videos_found"><b>0</b> Videos are found</string>
+    <string name="clear">Clear</string>
+    <string name="open_cap">OPEN</string>
+    <string name="shimob">ShiMob</string>
+    <string name="shimob_com">shimob.com</string>
+    <string name="add_to_speed_dail">Add to speed dial</string>
+    <string name="trending_request">Trending Request</string>
+    <string name="open_browser">Open Browser</string>
+    <string name="your_message">Your Message</string>
+    <string name="web_address">Web Address</string>
+    <string name="send_trending">Send Request</string>
+    <string name="sample_long_url"><![CDATA[www,shimob.com/music&sites_etc_mp3]]></string>
+    <string name="speed_dial_option">Speed Dial Option</string>
+    <string name="developer_story">Developer Story</string>
+    <string name="shibas_developer_story">Shiba</string>
+    <string name="about_developers">About Developers</string>
+    <string name="title">Title</string>
+    <string name="trending_img_bg">Trending Image bg</string>
+    <string name="share_via">Open with...</string>
+    <string name="feature_can_not_run_on_running_task">The feature can not work on a running download task.</string>
+    <string name="sexy_beach">Sexy betch.png</string>
+    <string name="clipboard_monitor">Clipboard Monitoring </string>
+    <string name="smart_download">Smart Download</string>
+    <string name="aladin_dm_title">Aladin DM Title</string>
+    <string name="trending_page_url">http://tekdrum.com/aladin/trending.php</string>
+
 </resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enjoying_videomate">Enjoying Aladin DM?</string>
+    <string name="happy_yes">Yes!</string>
+    <string name="not_happy_no">Not really</string>
+    <string name="give_us_5_star_rating">Please take a moment to rate Video Mate with a 5 star rating.</string>
+    <string name="tell_us_your_problem">Tell us your problem</string>
+    <string name="write_your_problem">Write your problem</string>
+    <string name="we_are_very_apologise">We are very apologise, if you tell us about the problem you are facing then we could help you as soon as possible.</string>
+
+    <string name="thank_you"><![CDATA[Thank you <b>]]></string>
+
+    <string name="you_are_using_latest_version">You are using the latest version.</string>
+    <string name="we_will_review_your_feedback">We will briefly review your feedback and get back to you as soon as possible.</string>
+    <string name="for_quick_help_email_us"><![CDATA[If you want a quick help then please do email at <a href=\"mailto:shimob.softwares@yahoo.com\">our customer care</a>.]]></string>
+    <string name="are_you_sure_to_exit_without_send_feedback">Are you sure want to exit without sending the feedback?</string>
+    <string name="do_you_have_idea"><![CDATA[Do you have a new feature idea? <b>GREAT!</b> Please let us know all about it.]]></string>
+    <string name="if_you_like_app_share_it_with_friends">Love VideoMate! then please share it with your friends. Spread the word!</string>
+    <string name="take_look_videomate">"Take a look at Aladin DM"</string>
+
+    <string name="rate_our_app">Rate our app?</string>
+    <string name="congrats_message_network_optimized">Congrats!! The download system is now optimized for your network connection.</string>
+    <string name="help_of_network_type">Please select your network type. It will optimize the download system.</string>
+
+    <string name="share_failed_dialog">Sharing filed. Please try again later.</string>
+
+</resources>

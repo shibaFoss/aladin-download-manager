@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="horizontal"
+                android:background="@color/color_primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp">
+
+    <!-- TooBar Title -->
+    <TextView
+            android:id="@+id/tool_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            style="@style/title_text_style"
+            android:textColor="@color/white"
+            android:text="@string/developer_story"
+
+            android:padding="@dimen/element_padding_8"
+            android:layout_centerInParent="true"
+            tools:ignore="SpUsage"/>
+
+    <!-- Back Button -->
+    <ImageButton
+            android:id="@+id/exit"
+            android:onClick="onBackButtonClick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/back"
+            android:background="@drawable/ic_button_press"
+            android:contentDescription="@string/exit"/>
+
+</RelativeLayout>

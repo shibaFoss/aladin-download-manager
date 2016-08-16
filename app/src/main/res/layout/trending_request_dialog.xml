@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/trending_request"
+            style="@style/title_text_style"
+
+            android:drawableLeft="@drawable/ic_top_trending"
+            android:padding="5dp"
+
+            android:gravity="left|center_vertical"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"
+            tools:ignore="ContentDescription"/>
+
+
+    <EditText
+            android:id="@+id/web_address_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:layout_margin="@dimen/element_padding_8"
+            android:background="@drawable/ic_edit_text_bg"
+
+            android:hint="@string/web_address"
+            style="@style/dialog_edit_text"
+            android:textSize="17sp"
+
+            android:padding="@dimen/element_padding_8"
+            android:gravity="center_vertical"
+            android:inputType="textUri"
+            />
+
+        <EditText
+                android:id="@+id/web_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="35dp"
+                android:layout_margin="@dimen/element_padding_8"
+                android:background="@drawable/ic_edit_text_bg"
+
+                android:hint="@string/title"
+                style="@style/dialog_edit_text"
+                android:textSize="17sp"
+
+                android:padding="@dimen/element_padding_8"
+                android:gravity="center_vertical"
+                android:inputType="textUri"
+                />
+
+    <EditText
+            android:id="@+id/message_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:layout_margin="@dimen/element_padding_8"
+
+            android:background="@drawable/ic_edit_text_bg"
+
+            android:minLines="2"
+            android:maxLines="5"
+
+            android:hint="@string/your_message"
+            style="@style/dialog_edit_text"
+            android:singleLine="false"
+
+            android:textSize="17sp"
+
+            android:padding="@dimen/element_padding_8"
+            android:gravity="left"
+            />
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancel_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+        <TextView
+                android:id="@+id/save_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/send_trending"
+                android:gravity="center"
+                />
+
+    </LinearLayout>
+
+</LinearLayout>

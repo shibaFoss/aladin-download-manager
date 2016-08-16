@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_style"
+            android:layout_margin="@dimen/dp_16">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout">
+
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/title_text_style"
+                android:text="@string/download_option"
+                android:padding="@dimen/dp_10"
+                android:gravity="center"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_border_deep"/>
+
+        <TextView
+                android:id="@+id/pause_bnt"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_button"
+                android:text="@string/pause"
+
+                android:drawableLeft="@drawable/ic_running_download_option_pause"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+        <TextView
+                android:id="@+id/resume_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/resume"
+
+                android:drawableLeft="@drawable/ic_running_download_option_resume"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+        <TextView
+                android:id="@+id/restart_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_button"
+                android:text="@string/restart"
+
+                android:drawableLeft="@drawable/ic_running_download_option_restart"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+        <TextView
+                android:id="@+id/remove_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/remove"
+
+                android:drawableLeft="@drawable/ic_running_download_option_remove"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+        <TextView
+                android:id="@+id/delete_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/delete"
+
+                android:drawableLeft="@drawable/ic_running_download_option_delete"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+
+        <TextView
+                android:id="@+id/more_setting_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/more_options"
+
+                android:drawableLeft="@drawable/ic_running_download_option_more"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"
+                tools:ignore="RtlHardcoded"/>
+
+        <ImageView
+                android:layout_width="230dp"
+                android:layout_height="1dp"
+                android:background="@color/transparent"/>
+
+    </LinearLayout>
+</ScrollView>

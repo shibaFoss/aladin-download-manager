@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="write_your_feedback">Write your feedback</string>
+
+    <string name="feedback">Feedback</string>
+    <string name="need_help">Need help</string>
+    <string name="your_problem">Your problem</string>
+    <string name="advise">Advise</string>
+    <string name="your_email">Your email</string>
+
+    <string name="your_name">Your name</string>
+    <string name="enter_your_valid_name">Please enter your valid name</string>
+    <string name="enter_your_valid_email">Please enter your valid email</string>
+    <string name="enter_your_feedback">Please describe your problem more clearly, so that we can help you as soon as possible.
+    </string>
+
+</resources>

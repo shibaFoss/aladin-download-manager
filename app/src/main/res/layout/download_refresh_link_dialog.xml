@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_layout"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/title_text_style"
+            android:text="@string/replace_download_link"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"
+            />
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"
+            android:contentDescription="@string/border"/>
+
+    <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_sub_title_style"
+            android:text="@string/download_refresh_link_help_description"
+
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+    <TextView
+            android:id="@+id/hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_sub_title_style"
+            android:textStyle="bold"
+            android:text="@string/paste_download_link"
+
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+    <EditText
+            android:id="@+id/url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_edit_text"
+
+            android:background="@drawable/ic_edit_text_bg"
+            android:layout_margin="@dimen/element_padding_8"
+
+            android:gravity="center_vertical"
+            android:padding="@dimen/element_padding_8"
+            android:inputType="textUri"/>
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancel_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+        <TextView
+                android:id="@+id/replace"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/replace"
+                android:gravity="center"
+                />
+    </LinearLayout>
+
+</LinearLayout>

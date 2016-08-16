@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:id="@+id/main_layout"
+                style="@style/dialog_style"
+                android:layout_margin="@dimen/dp_16">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download_path"
+            style="@style/title_text_style"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"
+            android:maxLines="3"/>
+
+    <TextView
+            android:id="@+id/upButton"
+            android:layout_below="@+id/title"
+
+            android:background="@drawable/ic_button_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5"
+            android:drawableLeft="@drawable/ic_up_black"
+
+            style="@style/dialog_button"
+            android:text="@string/up"/>
+
+    <ListView
+            android:id="@+id/file_list"
+            android:layout_below="@+id/upButton"
+            android:layout_above="@+id/border_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fastScrollEnabled="true"
+            android:listSelector="@drawable/ic_button_press"
+
+            android:divider="@color/transparent"
+            android:dividerHeight="1dp"
+            android:smoothScrollbar="true"
+            android:padding="@dimen/element_padding_8"/>
+
+    <View
+            android:id="@+id/border_1"
+            android:layout_above="@+id/buttonRoot"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:id="@+id/buttonRoot"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancel_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/new_file"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                style="@style/dialog_button"
+                android:text="@string/new_folder"
+                android:gravity="center"/>
+
+        <TextView
+                android:id="@+id/ok"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:padding="@dimen/dp_10"
+                style="@style/dialog_button"
+                android:text="@string/select"
+                android:gravity="center"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

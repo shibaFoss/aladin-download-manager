@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/dialog_style">
+
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/speed_dial_option"
+            style="@style/title_text_style"
+
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"
+            tools:ignore="ContentDescription"/>
+
+
+    <TextView
+            android:id="@+id/edit_bnt"
+            android:clickable="true"
+            android:background="@drawable/ic_button_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_25"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_5"
+
+            android:text="@string/rename"
+            style="@style/dialog_button"
+
+            android:drawableLeft="@drawable/ic_running_download_option_rename"
+
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5"/>
+
+    <TextView
+            android:id="@+id/delete_bnt"
+            android:clickable="true"
+            android:background="@drawable/ic_button_press"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingRight="@dimen/dp_25"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingTop="@dimen/dp_5"
+
+            android:text="@string/delete"
+            style="@style/dialog_button"
+
+            android:drawableLeft="@drawable/ic_running_download_option_delete"
+
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5"/>
+
+
+</LinearLayout>

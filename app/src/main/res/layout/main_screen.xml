@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/main_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <main.custom_views.NonSwappableViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tab_button_tab_layout"/>
+
+    <include
+            android:id="@+id/tab_button_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            layout="@layout/main_screen_tab_buttons_layout"/>
+
+</RelativeLayout>

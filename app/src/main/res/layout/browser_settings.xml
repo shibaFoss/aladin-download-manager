@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="@dimen/dp_16"
+              android:padding="@dimen/element_padding_8"
+              android:background="@drawable/ic_dialog_bg">
+
+    <TextView
+            android:id="@+id/forward_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/forward"
+            android:textColor="@color/black_light"
+            style="@style/dialog_button"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_forward"
+            android:drawableStart="@drawable/ic_forward"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/savefrom_bnt"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/savefrom_video"
+            android:textColor="@color/black_light"
+            style="@style/dialog_button"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_savefrom"
+            android:drawableStart="@drawable/ic_savefrom"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/share_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/open_browser"
+            android:textColor="@color/black_light"
+            style="@style/dialog_text_normal"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_share"
+            android:drawableStart="@drawable/ic_share"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/copy_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/copy_page_url"
+            android:textColor="@color/black_light"
+            style="@style/dialog_button"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_copy"
+            android:drawableStart="@drawable/ic_copy"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/desktop_mode_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/desktop_mode"
+            android:textColor="@color/black_light"
+            style="@style/dialog_text_normal"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_desktop"
+            android:drawableStart="@drawable/ic_desktop"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/browsing_user_agent_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/browser_user_agent"
+            android:textColor="@color/black_light"
+            style="@style/dialog_button"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_agent"
+            android:drawableStart="@drawable/ic_agent"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+    <TextView
+            android:id="@+id/more_settings_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="@string/more_settings"
+            android:textColor="@color/black_light"
+            style="@style/dialog_button"
+            android:padding="@dimen/dp_5"
+
+            android:drawableLeft="@drawable/ic_tool"
+            android:drawableStart="@drawable/ic_tool"
+            android:drawablePadding="@dimen/dp_5"
+
+            android:background="@drawable/ic_button_press"
+
+            android:gravity="center_vertical"
+            />
+
+</LinearLayout>

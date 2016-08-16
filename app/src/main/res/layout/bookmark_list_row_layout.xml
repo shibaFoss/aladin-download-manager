@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/root_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"
+            />
+
+    <TextView
+            android:id="@+id/title"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            style="@style/title_text_style"
+            android:textSize="@dimen/sp_17"
+
+            android:text="Bossmobi"
+            android:singleLine="true"
+            android:padding="@dimen/dp_10"
+            android:gravity="center_vertical"
+            />
+
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"
+            />
+
+</LinearLayout>

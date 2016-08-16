@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/main_layout"
+              android:background="@color/white"
+
+              android:layout_marginBottom="@dimen/dp_8"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:id="@+id/download_view"
+
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:clickable="true"
+            android:background="@drawable/ic_button_press"
+
+            tools:ignore="UselessParent">
+
+        <View
+                android:id="@+id/top_border"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:background="@color/color_border_deep"
+                />
+
+        <TextView
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/back_it_up"
+                style="@style/dialog_sub_title_style"
+                android:textColor="@color/black_light"
+                android:textSize="@dimen/sp_18"
+                android:singleLine="true"
+
+                android:drawableLeft="@drawable/ic_pause"
+                android:drawableStart="@drawable/ic_pause"
+
+                android:gravity="center_vertical"/>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_2">
+
+            <ProgressBar
+                    android:id="@+id/progressBar0"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar1"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar2"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"
+                    />
+
+            <ProgressBar
+                    android:id="@+id/progressBar3"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar4"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar5"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar6"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar7"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar8"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar9"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar10"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+
+            <ProgressBar
+                    android:id="@+id/progressBar11"
+                    style="@style/ic_running_download_progress"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:visibility="gone"/>
+        </LinearLayout>
+
+        <TextView
+                android:id="@+id/download_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/download_text_detail"
+
+                android:paddingTop="@dimen/dp_5"
+                android:paddingLeft="@dimen/element_padding_8"
+                android:paddingRight="@dimen/element_padding_8"
+
+                android:textColor="@color/black_light"
+                style="@style/dialog_sub_title_style"
+                android:textSize="@dimen/sp_14"
+                android:singleLine="true"
+                android:gravity="center_vertical"/>
+
+        <View
+                android:id="@+id/border_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dp_5"
+                android:background="@color/color_border_deep"
+                />
+    </LinearLayout>
+</LinearLayout>

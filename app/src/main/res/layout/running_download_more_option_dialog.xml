@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_style"
+            android:layout_margin="@dimen/dp_16">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/title_text_style"
+                android:text="@string/more_options"
+                android:padding="@dimen/dp_10"
+                android:gravity="center"
+                />
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_border_deep"/>
+
+        <TextView
+                android:id="@+id/open_file_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/open_file"
+
+                android:drawableLeft="@drawable/ic_file_folder"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/replace_link_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_button"
+                android:text="@string/replace_download_link"
+
+                android:drawableLeft="@drawable/ic_running_download_option_replace_link"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/force_assemble_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                style="@style/dialog_button"
+                android:text="@string/force_assemble"
+
+                android:drawableLeft="@drawable/ic_running_download_option_force_assemble"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+
+        <TextView
+                android:id="@+id/download_property_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_button"
+                android:text="@string/detail"
+
+                android:drawableLeft="@drawable/ic_running_download_option_detail"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+    </LinearLayout>
+</ScrollView>

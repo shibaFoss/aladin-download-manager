@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="copyright_notice">Copyright © 2015 - ShiMob Team.\nAll rights reserved.</string>
+    <string name="version_name">Version 1.0.30</string>
+    <integer name="version_code">4</integer>
+
+    <string name="icon_credit">Icon Credits :</string>
+    <string name="graphic_credit">Graphic Credit : </string>
+    <string name="open_source_license">Open Source Third Party Licenses</string>
+    <string name="license">Licenses</string>
+    <string name="about_us">About us</string>
+
+    <string name="icon_credit_html"><![CDATA[<b>Icon Credit : </b>]]></string>
+    <string name="graphic_credit_html"><![CDATA[<b>Graphic Credit : </b>]]></string>
+</resources>

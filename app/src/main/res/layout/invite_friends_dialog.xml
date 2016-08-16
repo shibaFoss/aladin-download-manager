@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/dp_5"
+              android:background="@drawable/ic_dialog_bg"
+              android:layout_margin="@dimen/element_padding_8">
+
+    <TextView
+            android:id="@+id/message_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="@dimen/element_padding_8"
+            android:text="Share Aladin DM with your friends, they will love you back."
+            android:textColor="@color/black_light"
+            style="@style/title_text_style"
+            />
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageButton
+                android:id="@+id/facebook_bnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+
+                android:background="@drawable/ic_button_press"
+                android:src="@drawable/ic_facebook"
+                />
+
+        <ImageButton
+                android:id="@+id/whats_app_bnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+
+                android:background="@drawable/ic_button_press"
+                android:src="@drawable/ic_whats_app"
+                />
+
+        <ImageButton
+                android:id="@+id/twitter_bnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+
+                android:background="@drawable/ic_button_press"
+                android:src="@drawable/ic_twitter"
+                />
+
+        <ImageButton
+                android:id="@+id/messenger_bnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+
+                android:background="@drawable/ic_button_press"
+                android:src="@drawable/ic_messenger"
+                />
+    </LinearLayout>
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <TextView
+            android:id="@+id/show_more_bnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Show More"
+            style="@style/dialog_button"
+            android:gravity="center"
+
+            android:padding="@dimen/dp_10"
+            />
+</LinearLayout>

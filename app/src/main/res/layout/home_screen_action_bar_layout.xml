@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/title_height"
+              android:background="@color/color_primary">
+
+    <TextView
+            android:id="@+id/speed_dial"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_button_press"
+            android:gravity="center"
+            android:text="@string/speed_dial"
+            style="@style/title_text_style"
+            android:textColor="@color/white"
+            />
+
+    <TextView
+            android:id="@+id/bookmarks"
+            android:clickable="true"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_button_press"
+            android:gravity="center"
+            android:text="@string/bookmarks"
+            style="@style/title_text_style"
+            android:textColor="@color/color_border_deep"
+            />
+
+</LinearLayout>

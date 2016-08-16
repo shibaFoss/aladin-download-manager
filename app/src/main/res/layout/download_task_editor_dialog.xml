@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_layout"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/download_manager"
+            style="@style/title_text_style"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"
+            android:layout_marginBottom="@dimen/dp_5"/>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="35dp"
+
+                android:layout_toLeftOf="@+id/file_path"
+
+                android:background="@drawable/ic_edit_text_bg"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/element_padding_8"
+
+                android:padding="@dimen/dp_5"
+
+                style="@style/dialog_edit_text"
+
+                android:hint="@string/file_link"
+
+                android:gravity="center_vertical"
+                android:inputType="textUri"/>
+
+        <ImageButton
+                android:id="@+id/file_path"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:src="@drawable/ic_file_folder"
+                android:background="@drawable/ic_button_press"
+                android:layout_alignParentRight="true"
+
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5"
+                android:contentDescription="@string/path_setting"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="35dp"
+
+                android:layout_toLeftOf="@+id/advance_setting"
+
+                android:background="@drawable/ic_edit_text_bg"
+
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:padding="@dimen/dp_5"
+
+                style="@style/dialog_edit_text"
+
+                android:hint="@string/file_name"
+
+                android:gravity="center_vertical"
+                android:inputType="textUri"/>
+
+        <ImageButton
+                android:id="@+id/advance_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_configuration"
+                android:background="@drawable/ic_button_press"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/advance_settings"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+            android:id="@+id/name_file_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/file_size"
+            style="@style/dialog_edit_text"
+
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5"
+
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_5"/>
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancel_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+        <TextView
+                android:id="@+id/download"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/download"
+                android:gravity="center"
+                />
+    </LinearLayout>
+
+</LinearLayout>

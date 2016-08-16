@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="download_settings">Download Settings</string>
+    <string name="network_configuration">Network configuration</string>
+    <string name="share_app">Share app</string>
+    <string name="request_feature">Request New Feature</string>
+    <string name="send_feedback">Send feedback</string>
+    <string name="check_new_update">Check new update</string>
+    <string name="rate_us">Rate us</string>
+
+</resources>

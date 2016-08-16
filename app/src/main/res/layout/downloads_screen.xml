@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/main_layout"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <!-- Title Bar/Tool Bar -->
+    <RelativeLayout
+            android:id="@+id/title_layout_root"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height"
+            android:background="@color/title_color"
+            tools:ignore="UselessParent">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/download_manager"
+                style="@style/title_text_style"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_centerInParent="true"/>
+
+        <!-- add Button -->
+        <ImageButton
+                android:id="@+id/add_download"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:padding="@dimen/dp_8"
+
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+
+                android:src="@drawable/plus"
+                android:background="@drawable/ic_button_press"
+                android:contentDescription="@string/menu"/>
+
+    </RelativeLayout>
+
+    <ImageView
+            android:id="@+id/shadow_under_title_layout_root"
+            android:layout_below="@+id/title_layout_root"
+            android:background="@drawable/tool_bar_drop_down"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:contentDescription="@string/border"/>
+
+    <LinearLayout
+            android:id="@+id/toggle_selector_layout_root"
+            android:layout_below="@+id/title_layout_root"
+
+            android:padding="@dimen/dp_5"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+        <TextView
+                android:id="@+id/downloading_bnt"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+
+                android:background="@color/color_primary"
+
+                android:text="@string/downloading"
+                android:textColor="@color/white"
+                style="@style/dialog_button"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+        <TextView
+                android:id="@+id/downloaded_bnt"
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+
+                android:background="@color/white"
+
+                android:text="@string/downloaded"
+                style="@style/dialog_button"
+                android:textColor="@color/black_light"
+                android:gravity="center_horizontal|center_vertical"
+                />
+
+    </LinearLayout>
+
+    <!-- View Pager Screen -->
+    <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_below="@+id/toggle_selector_layout_root"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+</RelativeLayout>

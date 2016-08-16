@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/dialog_style">
+
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_bookmark"
+            style="@style/title_text_style"
+
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"
+            tools:ignore="ContentDescription"/>
+
+
+    <EditText
+            android:id="@+id/message_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:layout_margin="@dimen/element_padding_8"
+            android:background="@drawable/ic_edit_text_bg"
+
+            android:hint="@string/file_name"
+            style="@style/dialog_edit_text"
+            android:textSize="17sp"
+
+            android:padding="@dimen/element_padding_8"
+            android:gravity="center_vertical"
+            android:inputType="textUri"
+            />
+
+    <EditText
+            android:id="@+id/file_url_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:layout_margin="@dimen/element_padding_8"
+            android:background="@drawable/ic_edit_text_bg"
+
+            android:hint="@string/file_link"
+            style="@style/dialog_edit_text"
+            android:textSize="17sp"
+
+            android:padding="@dimen/element_padding_8"
+            android:gravity="center_vertical"
+            android:inputType="textUri"
+            />
+
+    <CheckBox
+            android:id="@+id/add_speed_dial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_sub_title_style"
+            android:textSize="@dimen/sp_17"
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/add_to_speed_dail"
+            android:padding="@dimen/dp_10"
+            />
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancel_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+        <TextView
+                android:id="@+id/save_bnt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/save"
+                android:gravity="center"
+                />
+    </LinearLayout>
+
+
+</LinearLayout>

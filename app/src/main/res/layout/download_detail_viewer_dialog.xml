@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout"
+            style="@style/dialog_style">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/download_detail"
+                style="@style/title_text_style"
+                android:padding="@dimen/dp_10"
+                android:gravity="center"/>
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_border_deep"/>
+
+        <TextView
+                android:id="@+id/id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/id"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"
+                />
+
+        <TextView
+                android:id="@+id/file_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/file_name"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"
+                />
+
+        <TextView
+                android:id="@+id/filePath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/file_path"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"
+                />
+
+        <TextView
+                android:id="@+id/fileUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:selectAllOnFocus="true"
+
+                style="@style/dialog_sub_title_style"
+                android:text="@string/file_url"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/fileSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/file_size"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/totalDownloadParts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/totalDownloadParts"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/totalTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/dialog_sub_title_style"
+                android:text="@string/totalTime"
+                android:maxLines="4"
+                android:padding="@dimen/dp_5"/>
+
+
+        <View
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_border_deep"/>
+
+        <!-- Ok Button -->
+        <TextView
+                android:id="@+id/ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_5"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/close"
+                android:gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>

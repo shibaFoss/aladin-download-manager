@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_layout"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/advance_settings"
+            style="@style/title_text_style"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"/>
+
+    <CheckBox
+            android:id="@+id/file_catalog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_button"
+
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/file_catalog"
+            android:padding="@dimen/dp_10"
+            />
+
+    <CheckBox
+            android:id="@+id/auto_resume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_button"
+
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/auto_resume"
+            android:padding="@dimen/dp_10"
+            />
+
+    <CheckBox
+            android:id="@+id/tts_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_button"
+
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/tts_notification"
+            android:padding="@dimen/dp_10"
+            />
+
+    <CheckBox
+            android:id="@+id/network_2g"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_button"
+
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/_2g_network_connection"
+            android:padding="@dimen/dp_10"
+            />
+
+    <CheckBox
+            android:id="@+id/smart_download"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/dialog_button"
+
+            android:button="@drawable/ic_checkbox_button"
+            android:text="@string/smart_download_parting"
+            android:padding="@dimen/dp_10"
+            />
+
+    <LinearLayout
+            android:id="@+id/download_part_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/download_part_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_text_normal"
+
+                android:text="@string/download_parts"
+                android:padding="@dimen/dp_5"
+                />
+
+        <SeekBar
+                android:id="@+id/download_parts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="11"
+
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/progress_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/progress_timer_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_text_normal"
+
+                android:text="@string/progress_interval"
+                android:padding="@dimen/dp_5"
+                />
+
+        <SeekBar
+                android:id="@+id/progress_timer_seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="2"
+
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_10"
+                />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_layout"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_agent"
+            style="@style/title_text_style"
+
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"/>
+
+
+    <TextView
+            android:id="@+id/dis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_text_normal"
+            android:text="@string/help_of_user_agent"
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+    <TextView
+            android:id="@+id/previewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/userAgentSingleLine"
+            android:textStyle="bold"
+            style="@style/dialog_sub_title_style"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp_5"/>
+
+    <EditText
+            android:id="@+id/fileNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_edit_text"
+            android:background="@drawable/ic_edit_text_bg"
+            android:padding="@dimen/element_padding_8"
+            android:gravity="center_vertical"
+            android:inputType="textUri"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginRight="@dimen/dp_5"
+            />
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancelButton"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+            <TextView
+                    android:id="@+id/middle_bnt"
+                    android:visibility="gone"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dp_10"
+                    android:clickable="true"
+                    style="@style/dialog_button"
+                    android:text="@string/cancel"
+                    android:gravity="center"
+                    />
+
+
+            <TextView
+                android:id="@+id/okButton"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/save"
+                android:gravity="center"
+                />
+    </LinearLayout>
+
+</LinearLayout>

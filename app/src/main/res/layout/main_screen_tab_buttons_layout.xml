@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@color/title_color"
+              tools:ignore="ContentDescription">
+
+    <ImageButton
+            android:id="@+id/home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/home_press"
+            android:gravity="center"
+            android:background="@drawable/ic_button_press"
+            />
+
+    <ImageButton
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/browser_unpress"
+            android:gravity="center"
+            android:background="@drawable/ic_button_press"
+            />
+
+    <ImageButton
+            android:id="@+id/downloads"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/download_unpress"
+            android:gravity="center"
+            android:background="@drawable/ic_button_press"
+            />
+
+
+    <ImageButton
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/setting_unpress"
+            android:gravity="center"
+            android:background="@drawable/ic_button_press"
+            />
+
+</LinearLayout>

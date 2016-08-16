@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rate">Rate</string>
+    <string name="rate_now">RATE NOW</string>
+    <string name="send_email">SEND EMAIL</string>
+    <string name="feature_request">"Feature request of "</string>
+    <string name="version">". Version :: "</string>
+    <string name="android_version">" Android Version :: "</string>
+    <string name="cant_exit_while_active_download_task">" can't be closed during any running download task."</string>
+    <string name="download_task_running">" download tasks are running"</string>
+    <string name="download_task_is_running">" download task is running"</string>
+    <string name="space__">"… "</string>
+    <string name="do_you_want_to_exit">Do you want to exit this application ?</string>
+    <string name="minimize">Minimize</string>
+    <string name="press_once_more">Press back once more to exit</string>
+
+</resources>

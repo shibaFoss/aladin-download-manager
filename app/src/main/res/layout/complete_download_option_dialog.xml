@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_style"
+            android:layout_margin="@dimen/dp_16">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/title_text_style"
+                android:text="@string/complete_option"
+                android:padding="@dimen/dp_10"
+                android:gravity="center"
+                />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/color_border_deep"/>
+
+        <TextView
+                android:id="@+id/open_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/open_file"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_file_folder"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/lock_bnt"
+                android:visibility="gone"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/lock"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_lock"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+
+        <TextView
+                android:id="@+id/share_with_world_bnt"
+                android:visibility="gone"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_25"
+                android:paddingBottom="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
+
+                android:text="@string/share_with_downlaod_feed"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_share_downlaod_feed"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/share_file_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_25"
+                android:paddingBottom="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_5"
+
+                android:text="@string/share_file"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_share"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+
+        <TextView
+                android:id="@+id/rename_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/rename"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_running_download_option_rename"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/remove_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/remove"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_running_download_option_remove"
+
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/delete_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/delete"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_running_download_option_delete"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <TextView
+                android:id="@+id/download_property_bnt"
+                android:clickable="true"
+                android:background="@drawable/ic_button_press"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/property"
+                style="@style/dialog_button"
+
+                android:drawableLeft="@drawable/ic_running_download_option_detail"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp_5"/>
+
+        <View
+                android:layout_width="230dp"
+                android:layout_height="1dp"
+                android:background="@color/transparent"/>
+
+    </LinearLayout>
+
+</ScrollView>

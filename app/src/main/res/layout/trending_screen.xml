@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:wheel="http://schemas.android.com/apk/res-auto"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:padding="@dimen/dp_2">
+
+    <GridView
+            android:id="@+id/grid_trend"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:columnWidth="200dp"
+            android:gravity="center"
+            android:horizontalSpacing="@dimen/dp_2"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/dp_5"/>
+
+    <main.custom_views.ProgressWheel
+            android:id="@+id/progress_bar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            wheel:matProg_barColor="@color/blue"
+            wheel:matProg_progressIndeterminate="true"/>
+
+</RelativeLayout>

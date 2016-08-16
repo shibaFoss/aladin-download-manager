@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/title_text_style"
+            android:text="@string/default_download_part"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"/>
+
+    <TextView
+            android:id="@+id/dis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_sub_title_style"
+            android:text="@string/help_of_max_download_part"
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+    <TextView
+            android:id="@+id/download_part_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_sub_title_style"
+            android:textStyle="bold"
+            android:text="@string/download_parts"
+            android:padding="@dimen/dp_5"
+            />
+
+    <SeekBar
+            android:id="@+id/download_parts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="11"
+
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            />
+
+</LinearLayout>

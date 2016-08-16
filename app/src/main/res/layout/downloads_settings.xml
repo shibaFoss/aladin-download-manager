@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/root_setting_layer"
+              android:layout_marginTop="@dimen/dp_10">
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <!-- Download Path -->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+        <TextView
+                android:id="@+id/download_path"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:drawableLeft="@drawable/ic_download_directory"
+                android:drawableStart="@drawable/ic_download_directory"
+
+                android:drawablePadding="@dimen/dp_10"
+                android:padding="@dimen/dp_5"
+                android:gravity="center_vertical"
+
+                android:text="@string/download_directory"
+                style="@style/dialog_button"
+                android:textColor="@color/black_light"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_border_deep"/>
+
+    </LinearLayout>
+
+
+    <!-- Turbo Booster -->
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="0dp"
+                android:paddingStart="0dp"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingEnd="@dimen/dp_5">
+
+            <TextView
+                    android:id="@+id/turbo_booster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:drawableLeft="@drawable/ic_turbo_booster"
+                    android:drawableStart="@drawable/ic_turbo_booster"
+
+                    android:drawablePadding="@dimen/dp_10"
+                    android:padding="@dimen/dp_5"
+
+                    android:gravity="center_vertical"
+
+                    android:text="@string/turbo_booster"
+                    style="@style/dialog_button"
+                    android:textColor="@color/black_light"
+                    />
+
+            <ToggleButton
+                    android:id="@+id/turbo_booster_toggle"
+                    android:layout_width="50dp"
+                    android:layout_height="28dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:background="@drawable/toggle_selector"
+                    android:checked="true"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""/>
+
+        </RelativeLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_border_deep"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="0dp"
+                android:paddingStart="0dp"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingEnd="@dimen/dp_5">
+
+            <TextView
+                    android:id="@+id/auto_resume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawableLeft="@drawable/ic_auto_resume"
+                    android:drawableStart="@drawable/ic_auto_resume"
+
+                    android:drawablePadding="@dimen/dp_10"
+                    android:padding="@dimen/dp_5"
+                    android:gravity="center_vertical"
+                    android:text="@string/auto_resume"
+                    style="@style/dialog_button"
+                    android:textColor="@color/black_light"
+                    />
+
+            <ToggleButton
+                    android:id="@+id/auto_resume_toggle"
+                    android:layout_width="50dp"
+                    android:layout_height="29dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:background="@drawable/toggle_selector"
+                    android:checked="true"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""/>
+
+        </RelativeLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_border_deep"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_marginBottom="@dimen/dp_16">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="0dp"
+                android:paddingStart="0dp"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingEnd="@dimen/dp_5">
+
+            <TextView
+                    android:id="@+id/clipboard_monitor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawableLeft="@drawable/clipboard_monitor"
+                    android:drawableStart="@drawable/clipboard_monitor"
+
+                    android:drawablePadding="@dimen/dp_10"
+                    android:padding="@dimen/dp_5"
+                    android:gravity="center_vertical"
+                    android:text="@string/clipboard_monitor"
+                    style="@style/dialog_button"
+                    android:textColor="@color/black_light"
+                    />
+
+            <ToggleButton
+                    android:id="@+id/clipboard_monitor_toggle"
+                    android:layout_width="50dp"
+                    android:layout_height="29dp"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+
+                    android:background="@drawable/toggle_selector"
+                    android:checked="true"
+                    android:text=""
+                    android:textOff=""
+                    android:textOn=""/>
+
+        </RelativeLayout>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_border_deep"/>
+    </LinearLayout>
+
+    <include layout="@layout/more_settings_layout"/>
+
+
+</LinearLayout>

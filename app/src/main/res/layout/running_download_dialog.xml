@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/title_text_style"
+            android:text="@string/maximum_running_download"
+            android:padding="@dimen/dp_10"
+            android:gravity="center"
+            />
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"/>
+
+    <TextView
+            android:id="@+id/dis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/dialog_sub_title_style"
+            android:text="@string/help_of_max_running_download"
+            android:padding="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
+
+            <RadioButton
+                    android:id="@+id/_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:checked="true"
+
+                    android:padding="@dimen/dp_10"
+
+                    style="@style/dialog_text_normal"
+                    android:button="@drawable/ic_checkbox_button"
+                    android:text="@string/_1"/>
+
+            <RadioButton
+                    android:id="@+id/_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:checked="true"
+
+                    android:padding="@dimen/dp_10"
+
+                    style="@style/dialog_text_normal"
+                    android:button="@drawable/ic_checkbox_button"
+                    android:text="@string/_2"/>
+
+            <RadioButton
+                    android:id="@+id/_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:checked="true"
+
+                    android:padding="@dimen/dp_10"
+
+                    style="@style/dialog_text_normal"
+                    android:button="@drawable/ic_checkbox_button"
+                    android:text="@string/_3"/>
+
+        </RadioGroup>
+    </ScrollView>
+
+</LinearLayout>

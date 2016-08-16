@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                tools:context=".MainActivity">
+
+    <ImageView
+            android:id="@+id/music_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/dp_5"
+            android:paddingRight="@dimen/dp_5"
+
+            android:src="@drawable/ic_music_headphone"/>
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/music_icon"
+            android:layout_toRightOf="@+id/music_icon"
+            android:layout_toLeftOf="@+id/pause_bnt"
+            android:layout_toStartOf="@+id/pause_bnt"
+            android:layout_centerVertical="true">
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_text_normal"
+                android:padding="0dp"
+                android:text="@string/sample_song_name"
+                android:textColor="@color/white"
+                />
+
+
+        <TextView
+                android:id="@+id/sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                style="@style/dialog_sub_title_style_small"
+                android:padding="0dp"
+                android:text="@string/bossmobi"
+                android:textColor="#ffb4b4b4"
+                />
+
+    </LinearLayout>
+
+
+    <ImageButton
+            android:id="@+id/pause_bnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/ic_play_white"
+            android:background="@drawable/ic_button_press"/>
+
+</RelativeLayout>

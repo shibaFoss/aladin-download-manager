@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="@dimen/dp_5">
+
+
+    <TextView
+            android:id="@+id/video_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:drawableLeft="@drawable/ic_download_video_catalog"
+            android:padding="@dimen/dp_5"
+            android:gravity="center_vertical"
+            style="@style/dialog_text_normal"
+            android:singleLine="true"
+            android:text="@string/_34543_mp4"/>
+
+</LinearLayout>

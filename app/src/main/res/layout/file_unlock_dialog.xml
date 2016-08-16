@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/main_layout"
+              style="@style/dialog_style">
+
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/file_name_editor"
+            style="@style/title_text_style"
+
+            android:padding="@dimen/dp_10"
+            android:gravity="center"/>
+
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/color_border_deep"/>
+
+    <EditText
+            android:id="@+id/fileNameEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="35dp"
+            android:layout_margin="@dimen/element_padding_8"
+            android:background="@drawable/ic_edit_text_bg"
+
+            android:hint="@string/file_name"
+            style="@style/dialog_edit_text"
+            android:textSize="17sp"
+
+            android:padding="@dimen/element_padding_8"
+            android:gravity="center_vertical"
+            android:inputType="numberPassword"
+            />
+
+    <View
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_border_deep"/>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_3">
+
+        <TextView
+                android:id="@+id/cancelButton"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/cancel"
+                android:gravity="center"
+                />
+
+        <TextView
+                android:id="@+id/okButton"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_10"
+                android:clickable="true"
+                style="@style/dialog_button"
+                android:text="@string/ok"
+                android:gravity="center"
+                />
+    </LinearLayout>
+
+</LinearLayout>

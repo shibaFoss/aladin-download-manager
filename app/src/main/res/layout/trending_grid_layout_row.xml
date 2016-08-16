@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/root_layout"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="@color/color_4">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessParent">
+
+            <ImageView
+                    android:id="@+id/trend_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:contentDescription="@string/trending_img_bg"/>
+
+            <TextView
+                    android:id="@+id/center_text"
+                    style="@style/dialog_text_normal"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:text="@string/shimob"
+
+                    android:shadowColor="@color/black"
+                    android:shadowDx=".5"
+                    android:shadowDy=".5"
+                    android:shadowRadius=".6"
+
+                    android:visibility="gone"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_5"
+                    android:maxLines="2"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/trend_text"
+            android:background="@color/title_color"
+
+            style="@style/dialog_sub_title_style_small"
+            android:text="@string/shimob_com"
+            android:textColor="@color/white"
+
+            android:shadowColor="@color/black_light"
+            android:shadowDx=".5"
+            android:shadowDy=".5"
+            android:shadowRadius=".5"
+
+            android:gravity="center"
+            android:padding="@dimen/dp_5"
+
+            android:singleLine="true"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+</LinearLayout>
