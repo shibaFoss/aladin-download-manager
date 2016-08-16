@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/pause_after_errors"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:padding="@dimen/dp_10"
             android:gravity="center"/>
@@ -25,7 +25,7 @@
             android:id="@+id/dis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:text="@string/help_of_pause_after_error"
             android:padding="@dimen/dp_5"
             android:layout_marginTop="@dimen/dp_5"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/TotalNumberOfError"
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:padding="@dimen/dp_5"/>
@@ -50,7 +50,7 @@
             android:layout_margin="@dimen/element_padding_8"
             android:background="@drawable/ic_edit_text_bg"
 
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:text="@string/_121"
             android:padding="@dimen/element_padding_8"
             android:gravity="center_vertical"
@@ -76,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/cancel"
                 android:gravity="center"
                 />
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/save"
                 android:gravity="center"
                 />

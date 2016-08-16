@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/file_name_editor"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:padding="@dimen/dp_10"
             android:gravity="center"/>
@@ -30,7 +30,7 @@
             android:background="@drawable/ic_edit_text_bg"
 
             android:hint="@string/file_name"
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:textSize="17sp"
 
             android:padding="@dimen/element_padding_8"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/cancel"
                 android:gravity="center"
                 />
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/ok"
                 android:gravity="center"
                 />

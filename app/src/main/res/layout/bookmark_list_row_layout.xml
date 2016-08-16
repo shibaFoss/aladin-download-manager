@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:textSize="@dimen/sp_17"
 
             android:text="Bossmobi"

@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/speed_dial_option"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:padding="@dimen/dp_10"
             android:gravity="center"/>
@@ -36,7 +36,7 @@
             android:paddingTop="@dimen/dp_5"
 
             android:text="@string/rename"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
 
             android:drawableLeft="@drawable/ic_running_download_option_rename"
 
@@ -55,7 +55,7 @@
             android:paddingTop="@dimen/dp_5"
 
             android:text="@string/delete"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
 
             android:drawableLeft="@drawable/ic_running_download_option_delete"
 

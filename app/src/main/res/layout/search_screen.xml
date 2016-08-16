@@ -167,7 +167,7 @@
                 android:layout_toStartOf="@+id/clear_bnt"
 
                 android:singleLine="true"
-                style="@style/dialog_text_normal"
+                style="@style/style_txt_dialog_normal"
                 android:textColor="@color/white"
                 android:text="@string/_0_videos_found"
                 />
@@ -179,7 +179,7 @@
 
                 android:background="@drawable/ic_button_press"
                 android:textColor="@color/white"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/open_bnt"
@@ -194,7 +194,7 @@
 
                 android:background="@drawable/ic_button_press"
                 android:textColor="@color/white"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:text="@string/open"

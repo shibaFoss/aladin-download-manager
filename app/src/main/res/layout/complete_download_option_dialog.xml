@@ -16,7 +16,7 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:text="@string/complete_option"
                 android:padding="@dimen/dp_10"
                 android:gravity="center"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/open_file"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_file_folder"
 
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/lock"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_lock"
 
@@ -72,7 +72,7 @@
                 android:paddingTop="@dimen/dp_5"
 
                 android:text="@string/share_with_downlaod_feed"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_share_downlaod_feed"
 
@@ -91,7 +91,7 @@
                 android:paddingTop="@dimen/dp_5"
 
                 android:text="@string/share_file"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_share"
 
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/rename"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_running_download_option_rename"
                 android:gravity="center_vertical"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/remove"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_running_download_option_remove"
 
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/delete"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_running_download_option_delete"
                 android:gravity="center_vertical"
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/property"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
 
                 android:drawableLeft="@drawable/ic_running_download_option_detail"
                 android:gravity="center_vertical"

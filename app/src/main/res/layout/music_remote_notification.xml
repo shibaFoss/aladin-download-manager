@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                style="@style/dialog_text_normal"
+                style="@style/style_txt_dialog_normal"
                 android:padding="0dp"
                 android:text="@string/sample_song_name"
                 android:textColor="@color/white"

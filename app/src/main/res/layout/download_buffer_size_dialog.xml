@@ -10,7 +10,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:text="@string/download_buffer_size"
             android:padding="@dimen/dp_10"
             android:gravity="center"
@@ -25,7 +25,7 @@
             android:id="@+id/dis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:text="@string/help_of_downlaod_buffer_size"
             android:padding="@dimen/dp_5"
             android:layout_marginTop="@dimen/dp_5"
@@ -49,7 +49,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/kb_1"/>
 
@@ -62,7 +62,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/kb_2"/>
 
@@ -75,7 +75,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/kb_4"/>
 
@@ -88,7 +88,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/kb_8"/>
 
@@ -101,7 +101,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/kb_16"/>
 

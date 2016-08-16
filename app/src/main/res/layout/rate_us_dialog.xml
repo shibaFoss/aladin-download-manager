@@ -17,7 +17,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/enjoying_videomate"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:padding="@dimen/dp_10"
                 android:gravity="center"/>
 
@@ -37,7 +37,7 @@
             android:background="@drawable/ic_button_press"
             android:layout_marginTop="@dimen/element_padding_8"
             android:padding="@dimen/dp_10"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:text="@string/happy_yes"
 
             android:gravity="center"/>
@@ -56,7 +56,7 @@
 
             android:layout_marginTop="@dimen/element_padding_8"
             android:padding="@dimen/dp_10"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:text="@string/not_happy_no"
             android:gravity="center"/>
 

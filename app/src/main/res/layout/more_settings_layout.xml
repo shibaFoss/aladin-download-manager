@@ -29,7 +29,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/download_parts_"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -65,7 +65,7 @@
                     android:gravity="center_vertical"
 
                     android:text="@string/smart_download"
-                    style="@style/dialog_button"
+                    style="@style/style_txt_dialog_bnt"
                     android:textColor="@color/black_light"
                     />
 
@@ -121,7 +121,7 @@
                     android:gravity="center_vertical"
 
                     android:text="@string/auto_file_cataloging"
-                    style="@style/dialog_button"
+                    style="@style/style_txt_dialog_bnt"
                     android:textColor="@color/black_light"
                     />
 
@@ -173,7 +173,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/download_buffer_size"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -201,7 +201,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/running_downloads"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -232,7 +232,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/progress_interval"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -267,7 +267,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/pause_after_errors"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -306,7 +306,7 @@
                     android:gravity="center_vertical"
 
                     android:text="@string/only_via_wifi"
-                    style="@style/dialog_button"
+                    style="@style/style_txt_dialog_bnt"
                     android:textColor="@color/black_light"
                     />
 
@@ -354,7 +354,7 @@
                 android:gravity="center_vertical"
 
                 android:text="@string/user_agent"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 />
 
@@ -393,7 +393,7 @@
                     android:gravity="center_vertical"
 
                     android:text="@string/auto_redirection_filter"
-                    style="@style/dialog_button"
+                    style="@style/style_txt_dialog_bnt"
                     android:textColor="@color/black_light"
                     />
 

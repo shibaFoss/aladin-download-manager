@@ -90,7 +90,7 @@
 
             <TextView
                     android:id="@+id/current_time"
-                    style="@style/dialog_edit_text"
+                    style="@style/style_txt_dialog_input"
                     android:textColor="@color/white"
                     android:text="00:00"
 
@@ -107,7 +107,7 @@
 
             <TextView
                     android:id="@+id/total_time"
-                    style="@style/dialog_sub_title_style"
+                    style="@style/style_txt_dialog_sub_title"
                     android:textColor="@color/white"
                     android:text="00:00"
                     android:paddingRight="@dimen/dp_8"

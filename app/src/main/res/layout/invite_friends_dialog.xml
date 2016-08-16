@@ -15,7 +15,7 @@
             android:padding="@dimen/element_padding_8"
             android:text="Share Aladin DM with your friends, they will love you back."
             android:textColor="@color/black_light"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             />
 
     <View
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
 
             android:text="Show More"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:gravity="center"
 
             android:padding="@dimen/dp_10"

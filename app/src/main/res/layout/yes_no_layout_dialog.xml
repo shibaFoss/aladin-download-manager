@@ -10,7 +10,7 @@
             android:id="@+id/message_edit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:padding="@dimen/element_padding_8"/>
 
     <View
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/no"
                 android:gravity="center"/>
 
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/middleButton"
                 android:gravity="center"/>
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/yes"
                 android:gravity="center"/>
 

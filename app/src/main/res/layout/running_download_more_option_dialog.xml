@@ -16,7 +16,7 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:text="@string/more_options"
                 android:padding="@dimen/dp_10"
                 android:gravity="center"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/open_file"
 
                 android:drawableLeft="@drawable/ic_file_folder"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/replace_download_link"
 
                 android:drawableLeft="@drawable/ic_running_download_option_replace_link"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/force_assemble"
 
                 android:drawableLeft="@drawable/ic_running_download_option_force_assemble"
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/detail"
 
                 android:drawableLeft="@drawable/ic_running_download_option_detail"

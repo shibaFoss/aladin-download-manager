@@ -14,7 +14,7 @@
             android:drawableLeft="@drawable/ic_download_video_catalog"
             android:padding="@dimen/dp_5"
             android:gravity="center_vertical"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:singleLine="true"
             android:text="@string/_34543_mp4"/>
 

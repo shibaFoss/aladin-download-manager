@@ -12,7 +12,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:textColor="@color/white"
             android:text="@string/developer_story"
 
@@ -22,7 +22,7 @@
 
     <!-- Back Button -->
     <ImageButton
-            android:id="@+id/exit"
+            android:id="@+id/bnt_exit"
             android:onClick="onBackButtonClick"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="white">#ffffff</color>
+    <color name="green">#ff3c8f3b</color>
+    <color name="yellow">#ffdac648</color>
+    <color name="blue">#ff779ef4</color>
+
+
+
+    <color name="color_running_progress">#ff007dcf</color>
+
+
+    <color name="color_0">#ff346bc9</color>
+    <color name="color_1">#ff2a85b6</color>
+    <color name="color_2">#ffc53f38</color>
+    <color name="color_3">#ffab7c29</color>
+    <color name="color_4">#ff238361</color>
+    <color name="color_5">#ff53746d</color>
+    <color name="color_6">#ff424f89</color>
+    <color name="color_7">#ff9b527a</color>
+    <color name="color_8">#ff6c5527</color>
+    <color name="title_color">#ff1b2644</color>
+    <color name="white_grey">#ffacacac</color>
+
+
+    <array name="progress_colors">
+        <item>#FF3F8AF8</item>
+        <item>#FFD8433C</item>
+        <item>#FFF2AF3A</item>
+        <item>#FF279B5E</item>
+    </array>
+
+</resources>

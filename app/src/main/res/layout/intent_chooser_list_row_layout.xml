@@ -22,7 +22,7 @@
             android:layout_toRightOf="@+id/app_img"
             android:layout_alignParentRight="true"
 
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:textColor="@color/black_light"
             android:gravity="center_vertical"
             android:layout_centerVertical="true"/>

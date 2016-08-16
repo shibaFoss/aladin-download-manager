@@ -10,7 +10,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/videos_"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:padding="@dimen/dp_10"
             android:gravity="center"/>

@@ -10,7 +10,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:text="@string/share_via"
             android:padding="@dimen/dp_10"
             android:gravity="center"

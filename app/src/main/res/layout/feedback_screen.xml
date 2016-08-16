@@ -35,7 +35,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/abc_btn_radio_material"
                     android:text="@string/advise"/>
 
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/abc_btn_radio_material"
                     android:text="@string/need_help"/>
 
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_edit_text_bg"
-                style="@style/dialog_edit_text"
+                style="@style/style_txt_dialog_input"
                 android:textSize="17sp"
 
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_edit_text_bg"
 
-                style="@style/dialog_edit_text"
+                style="@style/style_txt_dialog_input"
                 android:textSize="17sp"
 
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_edit_text_bg"
 
-                style="@style/dialog_edit_text"
+                style="@style/style_txt_dialog_input"
                 android:textSize="17sp"
 
                 android:hint="@string/how_may_i_help_you"

@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="title_text_style">
+    <style name="style_txt_action_bar">
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textScaleX">.9</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="style_txt_title">
         <item name="android:textSize">@dimen/sp_19</item>
-        <item name="android:textScaleX">1</item>
+        <item name="android:textScaleX">.9</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="dialog_sub_title_style" parent="title_text_style">
+    <style name="style_txt_dialog_sub_title" parent="style_txt_title">
         <item name="android:textSize">@dimen/sp_17</item>
-        <item name="android:textScaleX">1</item>
+        <item name="android:textScaleX">.9</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="dialog_button" parent="title_text_style">
+    <style name="style_txt_dialog_bnt" parent="style_txt_title">
         <item name="android:clickable">true</item>
         <item name="android:textSize">@dimen/sp_18</item>
-        <item name="android:textScaleX">1</item>
+        <item name="android:textScaleX">.9</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
         <item name="android:background">@drawable/ic_button_press</item>
     </style>
 
-
-    <style name="dialog_edit_text">
+    <style name="style_txt_dialog_input">
         <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textScaleX">1</item>
+        <item name="android:textScaleX">.9</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:padding">@dimen/dp_5</item>
     </style>
 
-    <style name="dialog_text_normal">
+    <style name="style_txt_dialog_normal">
         <item name="android:textStyle">normal</item>
-        <item name="android:textScaleX">1</item>
+        <item name="android:textScaleX">.9</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:padding">@dimen/dp_5</item>
         <item name="android:textSize">18sp</item>
         <item name="android:lineSpacingExtra">2dp</item>
     </style>
 
-    <style name="tab_button" parent="title_text_style">
+    <!-- ======================================================================================================= -->
+    <style name="tab_button" parent="style_txt_title">
         <item name="android:textSize">@dimen/sp_14</item>
         <item name="android:textScaleX">1</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 
-    <style name="web_url" parent="title_text_style">
+    <style name="web_url" parent="style_txt_title">
         <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textScaleX">1</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
-        <item name="android:textAllCaps">false</item>
     </style>
 
 
-    <style name="dialog_sub_title_style_small" parent="dialog_sub_title_style">
+    <style name="dialog_sub_title_style_small" parent="style_txt_dialog_sub_title">
         <item name="android:textSize">@dimen/sp_15</item>
     </style>
 
@@ -74,7 +75,7 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
-    <style name="drawer_navigation_menu_item_button" parent="dialog_text_normal">
+    <style name="drawer_navigation_menu_item_button" parent="style_txt_dialog_normal">
         <item name="android:textSize">@dimen/sp_17</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:padding">@dimen/dp_10</item>
@@ -106,5 +107,5 @@
     </style>
 
 
-
+    <dimen name="sp_20">20sp</dimen>
 </resources>

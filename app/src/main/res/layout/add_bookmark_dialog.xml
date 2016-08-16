@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/add_bookmark"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:padding="@dimen/dp_10"
             android:gravity="center"/>
@@ -33,7 +33,7 @@
             android:background="@drawable/ic_edit_text_bg"
 
             android:hint="@string/file_name"
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:textSize="17sp"
 
             android:padding="@dimen/element_padding_8"
@@ -50,7 +50,7 @@
             android:background="@drawable/ic_edit_text_bg"
 
             android:hint="@string/file_link"
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:textSize="17sp"
 
             android:padding="@dimen/element_padding_8"
@@ -62,7 +62,7 @@
             android:id="@+id/add_speed_dial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:textSize="@dimen/sp_17"
             android:button="@drawable/ic_checkbox_button"
             android:text="@string/add_to_speed_dail"
@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/cancel"
                 android:gravity="center"
                 />
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/save"
                 android:gravity="center"
                 />

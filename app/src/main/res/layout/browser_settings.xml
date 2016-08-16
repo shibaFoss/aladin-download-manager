@@ -14,7 +14,7 @@
 
             android:text="@string/forward"
             android:textColor="@color/black_light"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_forward"
@@ -34,7 +34,7 @@
 
             android:text="@string/savefrom_video"
             android:textColor="@color/black_light"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_savefrom"
@@ -53,7 +53,7 @@
 
             android:text="@string/open_browser"
             android:textColor="@color/black_light"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_share"
@@ -72,7 +72,7 @@
 
             android:text="@string/copy_page_url"
             android:textColor="@color/black_light"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_copy"
@@ -91,7 +91,7 @@
 
             android:text="@string/desktop_mode"
             android:textColor="@color/black_light"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_desktop"
@@ -110,7 +110,7 @@
 
             android:text="@string/browser_user_agent"
             android:textColor="@color/black_light"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_agent"
@@ -129,7 +129,7 @@
 
             android:text="@string/more_settings"
             android:textColor="@color/black_light"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:padding="@dimen/dp_5"
 
             android:drawableLeft="@drawable/ic_tool"

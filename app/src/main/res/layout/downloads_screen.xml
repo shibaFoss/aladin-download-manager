@@ -19,7 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/download_manager"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:textColor="@color/white"
                 android:gravity="center"
                 android:layout_centerInParent="true"/>
@@ -68,7 +68,7 @@
 
                 android:text="@string/downloading"
                 android:textColor="@color/white"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:gravity="center_horizontal|center_vertical"
                 />
 
@@ -82,7 +82,7 @@
                 android:background="@color/white"
 
                 android:text="@string/downloaded"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:textColor="@color/black_light"
                 android:gravity="center_horizontal|center_vertical"
                 />

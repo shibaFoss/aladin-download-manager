@@ -18,7 +18,7 @@
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:text="@string/download_option"
                 android:padding="@dimen/dp_10"
                 android:gravity="center"/>
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/pause"
 
                 android:drawableLeft="@drawable/ic_running_download_option_pause"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/resume"
 
                 android:drawableLeft="@drawable/ic_running_download_option_resume"
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/restart"
 
                 android:drawableLeft="@drawable/ic_running_download_option_restart"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/remove"
 
                 android:drawableLeft="@drawable/ic_running_download_option_remove"
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/delete"
 
                 android:drawableLeft="@drawable/ic_running_download_option_delete"
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
 
 
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/more_options"
 
                 android:drawableLeft="@drawable/ic_running_download_option_more"

@@ -1,133 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/main_layout"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <!-- tool bar -->
-    <include layout="@layout/about_us_screen_action_bar"/>
+    <include layout="@layout/screen_about_us_action_bar"/>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@drawable/tool_bar_drop_down"/>
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/tool_bar_drop_down"/>
 
-    <!-- Container -->
     <ScrollView
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-                android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/element_padding_16"
+            android:paddingRight="@dimen/element_padding_16">
+
+            <TextView
+                style="@style/style_txt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/element_padding_16"
-                android:paddingRight="@dimen/element_padding_16">
+                android:gravity="center"
+                android:paddingLeft="@dimen/element_padding_8"
+                android:paddingRight="@dimen/element_padding_8"
+                android:paddingTop="@dimen/element_padding_8"
+                android:text="@string/app_name"/>
 
-            <!-- App info -->
             <TextView
-                    android:id="@+id/app_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/app_name"
-                    style="@style/title_text_style"
-                    android:gravity="center"
-                    android:paddingLeft="@dimen/element_padding_8"
-                    android:paddingTop="@dimen/element_padding_8"
-                    android:paddingRight="@dimen/element_padding_8"/>
-
-            <!-- version info -->
-            <TextView
-                    android:id="@+id/version_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="@string/version_name"
-                    android:textColor="@color/black_lighter"
-                    android:textSize="@dimen/sp_16"
-                    android:textScaleX=".9"
-
-                    android:padding="@dimen/element_padding_8"
-                    android:gravity="center"
-                    />
+                android:id="@+id/txt_version"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/element_padding_8"
+                android:text="@string/version_name"
+                android:textColor="@color/black_lighter"
+                android:textScaleX=".9"
+                android:textSize="@dimen/sp_16"
+                />
 
             <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/ic_app_icon"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/app_name"/>
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_app_icon"
+                android:layout_margin="@dimen/dp_8"/>
 
-            <!-- copyright info -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:background="@color/transparent_black" />
+
             <TextView
-                    android:id="@+id/copyright_notice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/style_txt_dialog_normal"
+                android:text="@string/license"
+                android:textStyle="bold"
+                />
 
+            <TextView
+                style="@style/style_txt_dialog_normal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gpl_license"
+                android:textSize="@dimen/sp_15"
+                />
 
-                    android:text="@string/copyright_notice"
-                    android:textColor="@color/black_light"
-                    style="@style/dialog_text_normal"
+            <Button
+                android:id="@+id/bnt_website"
+                style="@style/style_txt_dialog_normal"
+                android:background="@drawable/ic_button_selector_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="end"
+                android:text="@string/project_website"
+                android:layout_margin="@dimen/dp_8"
+                />
 
-                    android:padding="@dimen/element_padding_8"
-                    android:gravity="center"
-                    />
-
-
-            <RelativeLayout
-                    android:id="@+id/bottom_section_layout"
-                    android:layout_marginTop="50dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <!-- icon credit -->
-                    <TextView
-                            android:id="@+id/icon_credit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/icon_credit"
-                            style="@style/dialog_sub_title_style_small"
-
-                            android:padding="@dimen/element_padding_8"
-                            android:gravity="left"/>
-
-                    <!-- graphic  credit -->
-                    <TextView
-                            android:id="@+id/graphic_credit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:text="@string/graphic_credit"
-                            style="@style/dialog_sub_title_style_small"
-
-                            android:padding="@dimen/element_padding_8"
-                            android:gravity="left"/>
-
-                    <TextView
-                            android:id="@+id/open_source_license_bnt"
-                            android:onClick="onLegalNoticeClick"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:background="@drawable/ic_button_press"
-                            style="@style/dialog_button"
-                            android:paddingTop="@dimen/dp_10"
-                            android:paddingBottom="@dimen/dp_10"
-                            android:text="@string/open_source_license"/>
-                </LinearLayout>
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

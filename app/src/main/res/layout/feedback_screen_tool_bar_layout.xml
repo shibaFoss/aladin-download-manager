@@ -12,18 +12,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:textColor="@color/white"
             android:text="@string/write_your_feedback"
 
             android:padding="@dimen/element_padding_8"
-            android:layout_toRightOf="@+id/exit"
+            android:layout_toRightOf="@+id/bnt_exit"
             android:layout_centerVertical="true"
             tools:ignore="SpUsage"/>
 
     <!-- Back Button -->
     <ImageButton
-            android:id="@+id/exit"
+            android:id="@+id/bnt_exit"
             android:onClick="onBackClick"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

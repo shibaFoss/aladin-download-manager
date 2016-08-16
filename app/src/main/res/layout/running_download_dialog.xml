@@ -10,7 +10,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:text="@string/maximum_running_download"
             android:padding="@dimen/dp_10"
             android:gravity="center"
@@ -25,7 +25,7 @@
             android:id="@+id/dis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:text="@string/help_of_max_running_download"
             android:padding="@dimen/dp_5"
             android:layout_marginTop="@dimen/dp_5"
@@ -50,7 +50,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/_1"/>
 
@@ -63,7 +63,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/_2"/>
 
@@ -76,7 +76,7 @@
 
                     android:padding="@dimen/dp_10"
 
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:button="@drawable/ic_checkbox_button"
                     android:text="@string/_3"/>
 

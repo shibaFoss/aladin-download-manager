@@ -26,7 +26,7 @@
             android:layout_toRightOf="@id/folder"
             android:layout_centerVertical="true"
 
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
 
             android:singleLine="true"
             tools:ignore="RtlHardcoded"/>

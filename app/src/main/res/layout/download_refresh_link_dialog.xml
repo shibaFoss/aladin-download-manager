@@ -10,7 +10,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
             android:text="@string/replace_download_link"
             android:padding="@dimen/dp_10"
             android:gravity="center"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:text="@string/download_refresh_link_help_description"
 
             android:padding="@dimen/dp_5"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            style="@style/dialog_sub_title_style"
+            style="@style/style_txt_dialog_sub_title"
             android:textStyle="bold"
             android:text="@string/paste_download_link"
 
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
 
             android:background="@drawable/ic_edit_text_bg"
             android:layout_margin="@dimen/element_padding_8"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/cancel"
                 android:gravity="center"
                 />
@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/replace"
                 android:gravity="center"
                 />

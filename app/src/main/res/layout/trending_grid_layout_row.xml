@@ -26,7 +26,7 @@
 
             <TextView
                     android:id="@+id/center_text"
-                    style="@style/dialog_text_normal"
+                    style="@style/style_txt_dialog_normal"
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:text="@string/shimob"

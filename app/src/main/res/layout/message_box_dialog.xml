@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/message_box"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
 
                 android:padding="@dimen/dp_10"
                 android:gravity="center"/>
@@ -35,7 +35,7 @@
             android:id="@+id/message_edit"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            style="@style/dialog_text_normal"
+            style="@style/style_txt_dialog_normal"
             android:padding="@dimen/element_padding_8"/>
 
     <View
@@ -52,7 +52,7 @@
 
             android:layout_marginTop="@dimen/dp_3"
             android:padding="@dimen/dp_10"
-            style="@style/dialog_button"
+            style="@style/style_txt_dialog_bnt"
             android:text="@string/close"
             android:gravity="center"/>
 

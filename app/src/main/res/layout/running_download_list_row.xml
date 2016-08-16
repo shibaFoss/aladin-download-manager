@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
 
                 android:text="@string/back_it_up"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:textColor="@color/black_light"
                 android:textSize="@dimen/sp_18"
                 android:singleLine="true"
@@ -160,7 +160,7 @@
                 android:paddingRight="@dimen/element_padding_8"
 
                 android:textColor="@color/black_light"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:textSize="@dimen/sp_14"
                 android:singleLine="true"
                 android:gravity="center_vertical"/>

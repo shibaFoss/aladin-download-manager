@@ -12,7 +12,7 @@
 
         <TextView
                 android:id="@+id/title"
-                style="@style/dialog_text_normal"
+                style="@style/style_txt_dialog_normal"
                 android:textColor="@color/white"
                 android:shadowColor="@color/black"
                 android:shadowDx="1"

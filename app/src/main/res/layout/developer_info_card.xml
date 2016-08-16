@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
 
                 android:gravity="center_horizontal|center_vertical"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 />
 
     </LinearLayout>

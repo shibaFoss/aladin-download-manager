@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/trending_request"
-            style="@style/title_text_style"
+            style="@style/style_txt_title"
 
             android:drawableLeft="@drawable/ic_top_trending"
             android:padding="5dp"
@@ -34,7 +34,7 @@
             android:background="@drawable/ic_edit_text_bg"
 
             android:hint="@string/web_address"
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:textSize="17sp"
 
             android:padding="@dimen/element_padding_8"
@@ -51,7 +51,7 @@
                 android:background="@drawable/ic_edit_text_bg"
 
                 android:hint="@string/title"
-                style="@style/dialog_edit_text"
+                style="@style/style_txt_dialog_input"
                 android:textSize="17sp"
 
                 android:padding="@dimen/element_padding_8"
@@ -72,7 +72,7 @@
             android:maxLines="5"
 
             android:hint="@string/your_message"
-            style="@style/dialog_edit_text"
+            style="@style/style_txt_dialog_input"
             android:singleLine="false"
 
             android:textSize="17sp"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/cancel"
                 android:gravity="center"
                 />
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dp_10"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/send_trending"
                 android:gravity="center"
                 />

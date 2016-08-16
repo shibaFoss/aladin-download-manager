@@ -16,7 +16,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/download_detail"
-                style="@style/title_text_style"
+                style="@style/style_txt_title"
                 android:padding="@dimen/dp_10"
                 android:gravity="center"/>
 
@@ -29,7 +29,7 @@
                 android:id="@+id/id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/id"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"
@@ -39,7 +39,7 @@
                 android:id="@+id/file_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/file_name"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"
@@ -49,7 +49,7 @@
                 android:id="@+id/filePath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/file_path"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"
@@ -62,7 +62,7 @@
 
                 android:selectAllOnFocus="true"
 
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/file_url"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"/>
@@ -71,7 +71,7 @@
                 android:id="@+id/fileSize"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/file_size"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"/>
@@ -80,7 +80,7 @@
                 android:id="@+id/totalDownloadParts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/totalDownloadParts"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"/>
@@ -89,7 +89,7 @@
                 android:id="@+id/totalTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/dialog_sub_title_style"
+                style="@style/style_txt_dialog_sub_title"
                 android:text="@string/totalTime"
                 android:maxLines="4"
                 android:padding="@dimen/dp_5"/>
@@ -109,7 +109,7 @@
                 android:padding="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_5"
                 android:clickable="true"
-                style="@style/dialog_button"
+                style="@style/style_txt_dialog_bnt"
                 android:text="@string/close"
                 android:gravity="center"/>
 
