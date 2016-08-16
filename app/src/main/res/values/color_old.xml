@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
-
     <color name="white">#ffffff</color>
     <color name="green">#ff3c8f3b</color>
     <color name="yellow">#ffdac648</color>
     <color name="blue">#ff779ef4</color>
 
-
-
     <color name="color_running_progress">#ff007dcf</color>
-
 
     <color name="color_0">#ff346bc9</color>
     <color name="color_1">#ff2a85b6</color>

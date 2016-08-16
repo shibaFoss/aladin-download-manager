@@ -1,13 +1,103 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="in.softc.aladindm">
+          package="net.fdm">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_app_icon"
-        android:label="@string/app_name"
-        android:supportsRtl="false"
-        android:theme="@android:style/Theme.Holo.Light.NoActionBar">
+        android:name="main.app.App"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name_short"
+        android:theme="@style/application_theme"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+        android:screenOrientation="portrait">
+
+        <!-- Ad Services Tags -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+
+        <!-- Main Screen -->
+        <activity
+            android:launchMode="standard"
+            android:name="main.screens.main_screen.MainScreen"
+            android:noHistory="false">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="http"/>
+                <data android:host="*"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+
+        </activity>
+
+        <!-- Feedback Screen -->
+        <activity
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize"
+            android:name="main.screens.main_screen.feedback_screen.FeedbackScreen"/>
+
+        <!-- DownloadService -->
+        <service
+            android:name="main.download_manager.DownloadService"
+            android:configChanges=
+                "keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:exported="false">
+        </service>
+
+        <!-- Popup Download Screen -->
+        <activity
+            android:label=""
+            android:launchMode="singleTop"
+            android:name="main.screens.popup_screen.DownloadPopupScreen"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:taskAffinity=""
+            android:theme="@style/download_popup_screen_theme"
+            android:noHistory="true"/>
+
+        <!-- About Activity -->
+        <activity
+            android:launchMode="singleTop"
+            android:name="main.screens.about_us_screen.AboutAppScreen"
+            android:noHistory="false"/>
+
+        <!-- About Activity -->
+        <activity
+            android:launchMode="standard"
+            android:name="main.screens.developer_story_screen.DeveloperStoryScreen"
+            android:noHistory="false"/>
 
     </application>
-
 </manifest>
