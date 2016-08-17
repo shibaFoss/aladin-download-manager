@@ -2,10 +2,10 @@ package main.screens.popup_screen;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.WindowManager;
+
 import main.download_manager.DownloadTaskEditor;
 import main.key_database.KeyStore;
 import main.screens.BaseScreen;
@@ -22,13 +22,10 @@ public final class DownloadPopupScreen extends BaseScreen {
     }
 
     @Override
-    public void onLayoutLoad() {
+    public void onAfterLayoutLoad() {
         setUpWindowConfiguration();
         initDownloadManagerDialog();
-    }
 
-    @Override
-    public void onAfterLayoutLoad() {
         getFileUrl_FileName();
         if (downloadTaskEditor == null) initDownloadManagerDialog();
 
@@ -53,14 +50,9 @@ public final class DownloadPopupScreen extends BaseScreen {
         finish();
     }
 
-    @Override
-    public void onClearMemory() {
-
-    }
-
-    @Override
-    public void onScreenOptionChange(Configuration configuration) {
-
+    private void setUpWindowConfiguration() {
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        getWindow().getAttributes().width = WindowManager.LayoutParams.MATCH_PARENT;
     }
 
     private void initDownloadManagerDialog() {
@@ -71,11 +63,6 @@ public final class DownloadPopupScreen extends BaseScreen {
                 finish();
             }
         });
-    }
-
-    private void setUpWindowConfiguration() {
-        getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        getWindow().getAttributes().width = WindowManager.LayoutParams.MATCH_PARENT;
     }
 
     private void getFileUrl_FileName() {

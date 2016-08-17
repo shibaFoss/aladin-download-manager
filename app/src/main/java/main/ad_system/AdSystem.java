@@ -1,13 +1,15 @@
 package main.ad_system;
 
 import android.widget.RelativeLayout;
-import async_job.AsyncJob;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+
+import libs.async_job.AsyncJob;
 import main.screens.BaseScreen;
 
-import static async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInBackground;
 
 
 public class AdSystem {
@@ -28,18 +30,6 @@ public class AdSystem {
         });
     }
 
-
-    public void loadAds(boolean resumeAd) {
-        if (adView != null) {
-            if (resumeAd) {
-                adView.resume();
-            } else {
-                adView.pause();
-            }
-        }
-    }
-
-
     private void loadAds(final String adUnitId,
                          final AdView adView, final RelativeLayout adViewContainerLayout) {
         AsyncJob.doInMainThread(new AsyncJob.MainThreadJob() {
@@ -52,6 +42,16 @@ public class AdSystem {
                 adView.loadAd(adRequest);
             }
         });
+    }
+
+    public void loadAds(boolean resumeAd) {
+        if (adView != null) {
+            if (resumeAd) {
+                adView.resume();
+            } else {
+                adView.pause();
+            }
+        }
     }
 
 }

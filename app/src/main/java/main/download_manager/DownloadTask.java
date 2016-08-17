@@ -7,12 +7,7 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
-import async_job.AsyncJob.BackgroundJob;
-import async_job.AsyncJob.MainThreadJob;
-import main.app.App;
-import main.download_manager.DownloadPart.DownloadStatusListener;
-import main.key_database.KeyStore;
-import main.screens.main_screen.MainScreen;
+
 import net.fdm.R;
 
 import java.io.File;
@@ -22,11 +17,24 @@ import java.io.RandomAccessFile;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static async_job.AsyncJob.doInBackground;
-import static async_job.AsyncJob.doInMainThread;
-import static main.download_manager.DownloadStatus.*;
+import libs.async_job.AsyncJob.BackgroundJob;
+import libs.async_job.AsyncJob.MainThreadJob;
+import main.app.App;
+import main.download_manager.DownloadPart.DownloadStatusListener;
+import main.key_database.KeyStore;
+import main.screens.main_screen.MainScreen;
+
+import static libs.async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInMainThread;
+import static main.download_manager.DownloadStatus.CLOSE;
+import static main.download_manager.DownloadStatus.COMPLETE;
+import static main.download_manager.DownloadStatus.DOWNLOADING;
 import static main.download_manager.DownloadTaskEditor.SIZE_NOT_MEASURED;
-import static main.download_manager.DownloadTools.*;
+import static main.download_manager.DownloadTools.getChunkSize;
+import static main.download_manager.DownloadTools.getFileSize;
+import static main.download_manager.DownloadTools.getFormatted;
+import static main.download_manager.DownloadTools.getFormattedPercentage;
+import static main.download_manager.DownloadTools.getSmartNumberOfDownloadParts;
 import static main.parse.ParseServer.trackDownloadInfo;
 import static main.utilities.NetworkUtils.isNetworkAvailable;
 
@@ -101,72 +109,6 @@ public final class DownloadTask implements DownloadStatusListener {
         this.updateDownloadUIProgress();
     }
 
-
-    public void startDownload() throws Exception {
-        configure();
-        createEmptyDestinationFile();
-        startAllDownloadThreads();
-
-        model.extraText = "";
-        model.isRunning = true;
-
-        model.updateDataInDisk();
-
-        updateDownloadStatus(DOWNLOADING);
-        updateDownloadUIProgress();
-        progressUpdater.start();
-    }
-
-
-    public void cancelDownload() {
-        cancelAllDownloadThreads();
-
-        model.extraText = "";
-        model.isRunning = false;
-
-        model.updateDataInDisk();
-        updateDownloadStatus(CLOSE);
-        updateDownloadUIProgress();
-    }
-
-
-    public void updateDownloadUIProgress() {
-        doInMainThread(new MainThreadJob() {
-            @Override
-            public void doInUIThread() {
-                if (uiManager != null) {
-                    uiManager.updateDownloadProgressWith(model);
-                }
-            }
-        });
-    }
-
-
-    public Context getContext() {
-        return this.context;
-    }
-
-
-    public File getDestinationFile() {
-        return this.destinationFile;
-    }
-
-
-    public void setDownloadStatusListener(DownloadStatusListener listener) {
-        this.downloadStatusListener = listener;
-    }
-
-
-    public App getApp() {
-        return this.app;
-    }
-
-
-    public void setApp(App app) {
-        this.app = app;
-    }
-
-
     private void initNotification() {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationBuilder = new NotificationCompat.Builder(context);
@@ -178,7 +120,6 @@ public final class DownloadTask implements DownloadStatusListener {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
         notificationBuilder.setContentIntent(pendingIntent);
     }
-
 
     private void initProgressTimer() {
         int intervalTime = model.uiProgressInterval;
@@ -196,6 +137,16 @@ public final class DownloadTask implements DownloadStatusListener {
         };
     }
 
+    public void updateDownloadUIProgress() {
+        doInMainThread(new MainThreadJob() {
+            @Override
+            public void doInUIThread() {
+                if (uiManager != null) {
+                    uiManager.updateDownloadProgressWith(model);
+                }
+            }
+        });
+    }
 
     private void updateDownloadProgress() {
         doInBackground(new BackgroundJob() {
@@ -218,6 +169,17 @@ public final class DownloadTask implements DownloadStatusListener {
         });
     }
 
+    private void increaseTotalTime() {
+        if (!model.isWaitingForNetwork)
+            model.totalTime += model.uiProgressInterval;
+    }
+
+    //Show the download progress in a system notification.
+    private void showSystemNotification(boolean isCompleteDownload) {
+        calculateDownloadProgress();
+        configureNotification(isCompleteDownload);
+        notificationManager.notify(model.id, notificationBuilder.build());
+    }
 
     private void watchNetworkConnection() {
         for (DownloadPart downloadPart : totalDownloadParts)
@@ -231,21 +193,6 @@ public final class DownloadTask implements DownloadStatusListener {
             }
         }
     }
-
-
-    private void increaseTotalTime() {
-        if (!model.isWaitingForNetwork)
-            model.totalTime += model.uiProgressInterval;
-    }
-
-
-    //Show the download progress in a system notification.
-    private void showSystemNotification(boolean isCompleteDownload) {
-        calculateDownloadProgress();
-        configureNotification(isCompleteDownload);
-        notificationManager.notify(model.id, notificationBuilder.build());
-    }
-
 
     private void calculateDownloadProgress() {
         model.totalByteWroteToDisk = 0;
@@ -265,6 +212,40 @@ public final class DownloadTask implements DownloadStatusListener {
             model.downloadPercentage = 100.0f;
     }
 
+    private void configureNotification(boolean isCompleteDownload) {
+        if (isCompleteDownload) {
+            model.isComplete = true;
+            model.downloadPercentage = 100.0f;
+            notificationBuilder.setSmallIcon(R.drawable.ic_completed);
+            notificationBuilder.setContentText("Download Complete : 100%");
+        } else {
+            if (model.isWaitingForNetwork) {
+                notificationBuilder.setContentText("Downloading : " + "Waiting for network...");
+                notificationBuilder.setProgress(100, (int) model.downloadPercentage, true);
+            } else {
+                notificationBuilder.setContentText("Downloading : " +
+                        getFormattedPercentage(model) + "% " + model.remainingTime);
+                notificationBuilder.setProgress(100, (int) model.downloadPercentage, false);
+            }
+        }
+    }
+
+    private void startAllDownloadThreads() {
+        for (DownloadPart downloadPart : totalDownloadParts) {
+            if (downloadPart.downloadStatus != DownloadStatus.DOWNLOADING) {
+                downloadPart.startDownload();
+            }
+        }
+    }
+
+    private void calculateRemainingTime() {
+        double totalTime = (double) this.model.totalTime;
+        double totalDownloadedByte = (double) this.model.totalByteWroteToDisk;
+        double totalFileLength = (double) this.model.totalFileLength;
+        double remainingTime = ((totalTime / totalDownloadedByte) * (totalFileLength - totalDownloadedByte));
+        this.model.remainingTime = DownloadTools.calculateTime((long) totalTime) + "/" +
+                DownloadTools.calculateTime((long) remainingTime);
+    }
 
     private void calculateNetworkSpeed() {
         double byteReadPerSec = 1.0;
@@ -285,61 +266,26 @@ public final class DownloadTask implements DownloadStatusListener {
             model.networkSpeed = getFormatted(byteReadPerSec / (1024 * 1024)) + "Mb/s";
     }
 
+    public void startDownload() throws Exception {
+        configure();
+        createEmptyDestinationFile();
+        startAllDownloadThreads();
 
-    private void configureNotification(boolean isCompleteDownload) {
-        if (isCompleteDownload) {
-            model.isComplete = true;
-            model.downloadPercentage = 100.0f;
-            notificationBuilder.setSmallIcon(R.drawable.ic_completed);
-            notificationBuilder.setContentText("Download Complete : 100%");
-        } else {
-            if (model.isWaitingForNetwork) {
-                notificationBuilder.setContentText("Downloading : " + "Waiting for network...");
-                notificationBuilder.setProgress(100, (int) model.downloadPercentage, true);
-            } else {
-                notificationBuilder.setContentText("Downloading : " +
-                        getFormattedPercentage(model) + "% " + model.remainingTime);
-                notificationBuilder.setProgress(100, (int) model.downloadPercentage, false);
-            }
-        }
+        model.extraText = "";
+        model.isRunning = true;
+
+        model.updateDataInDisk();
+
+        updateDownloadStatus(DOWNLOADING);
+        updateDownloadUIProgress();
+        progressUpdater.start();
     }
 
-
-    private void calculateRemainingTime() {
-        double totalTime = (double) this.model.totalTime;
-        double totalDownloadedByte = (double) this.model.totalByteWroteToDisk;
-        double totalFileLength = (double) this.model.totalFileLength;
-        double remainingTime = ((totalTime / totalDownloadedByte) * (totalFileLength - totalDownloadedByte));
-        this.model.remainingTime = DownloadTools.calculateTime((long) totalTime) + "/" +
-                DownloadTools.calculateTime((long) remainingTime);
+    private void configure() throws Exception {
+        //skip configuring model if it is a old download task.
+        if (model.totalByteWroteToDisk < 1) configuredDownloadModel(new URL(model.fileUrl));
+        this.totalDownloadParts = generateDownloadParts(model.chunkSize);
     }
-
-
-    //Update the current download status with the new download status code.
-    private void updateDownloadStatus(int downloadStatus) {
-        DOWNLOAD_STATUS = downloadStatus;
-        model.downloadStatus = downloadStatus;
-
-        if (downloadStatusListener != null)
-            downloadStatusListener.onStatusUpdate(this, DOWNLOAD_STATUS);
-    }
-
-
-    private void startAllDownloadThreads() {
-        for (DownloadPart downloadPart : totalDownloadParts) {
-            if (downloadPart.downloadStatus != DownloadStatus.DOWNLOADING) {
-                downloadPart.startDownload();
-            }
-        }
-    }
-
-
-    private void cancelAllDownloadThreads() {
-        for (DownloadPart part : totalDownloadParts) part.cancelDownload();
-    }
-
-    //-------------- CONFIGURE DOWNLOAD TASK ----------------------------------------------------------------//
-
 
     private void createEmptyDestinationFile() throws IOException {
         doInBackground(new BackgroundJob() {
@@ -357,13 +303,14 @@ public final class DownloadTask implements DownloadStatusListener {
         });
     }
 
+    //Update the current download status with the new download status code.
+    private void updateDownloadStatus(int downloadStatus) {
+        DOWNLOAD_STATUS = downloadStatus;
+        model.downloadStatus = downloadStatus;
 
-    private void configure() throws Exception {
-        //skip configuring model if it is a old download task.
-        if (model.totalByteWroteToDisk < 1) configuredDownloadModel(new URL(model.fileUrl));
-        this.totalDownloadParts = generateDownloadParts(model.chunkSize);
+        if (downloadStatusListener != null)
+            downloadStatusListener.onStatusUpdate(this, DOWNLOAD_STATUS);
     }
-
 
     private void configuredDownloadModel(URL url) throws MalformedURLException {
         if (model.totalFileLength == SIZE_NOT_MEASURED)
@@ -384,7 +331,6 @@ public final class DownloadTask implements DownloadStatusListener {
         model.downloadPartTotalByteWrite = new long[model.numberOfPart];
     }
 
-
     private DownloadPart[] generateDownloadParts(long chunkSize) throws Exception {
         if (chunkSize < 1) throw new Exception("Chunk size can not be < 1");
 
@@ -400,8 +346,44 @@ public final class DownloadTask implements DownloadStatusListener {
         return totalDownloadParts;
     }
 
-    //========================== Callbacks from downloadParts ==========================//
+    public void cancelDownload() {
+        cancelAllDownloadThreads();
 
+        model.extraText = "";
+        model.isRunning = false;
+
+        model.updateDataInDisk();
+        updateDownloadStatus(CLOSE);
+        updateDownloadUIProgress();
+    }
+
+    public Context getContext() {
+        return this.context;
+    }
+
+    public File getDestinationFile() {
+        return this.destinationFile;
+    }
+
+    //-------------- CONFIGURE DOWNLOAD TASK ----------------------------------------------------------------//
+
+    public void setDownloadStatusListener(DownloadStatusListener listener) {
+        this.downloadStatusListener = listener;
+    }
+
+    public App getApp() {
+        return this.app;
+    }
+
+    public void setApp(App app) {
+        this.app = app;
+    }
+
+    private void cancelAllDownloadThreads() {
+        for (DownloadPart part : totalDownloadParts) part.cancelDownload();
+    }
+
+    //========================== Callbacks from downloadParts ==========================//
 
     @Override
     public synchronized void onTerminate(DownloadPart downloadPart) {
@@ -424,6 +406,29 @@ public final class DownloadTask implements DownloadStatusListener {
         }
     }
 
+    @Override
+    public void onComplete(DownloadPart downloadPart) {
+        model.partProgressPercentage[downloadPart.partNumber] = 100;
+
+        for (DownloadPart part : totalDownloadParts)
+            if (part.downloadStatus != COMPLETE) return;
+
+        model.deleteFromDisk(DownloadModel.FILE_FORMAT);
+        model.isRunning = false;
+        model.extraText = "";
+        model.changeToCompleteModel();
+
+        showSystemNotification(true);
+
+        updateDownloadStatus(CLOSE);
+        updateDownloadStatus(COMPLETE);
+
+        //vibrate the notification with the setting vibrator strength.
+        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(30);
+
+        trackDownloadInfo(context, model);
+    }
 
     private void showDownloadErrorAdvise(DownloadPart downloadPart) {
         if (!isDownloadErrorAdviseShown) {
@@ -436,7 +441,6 @@ public final class DownloadTask implements DownloadStatusListener {
             }
         }
     }
-
 
     private boolean autoResumeDownloadPart(DownloadPart downloadPart) {
         boolean autoResume = false;
@@ -463,31 +467,6 @@ public final class DownloadTask implements DownloadStatusListener {
             }
         }
         return autoResume;
-    }
-
-
-    @Override
-    public void onComplete(DownloadPart downloadPart) {
-        model.partProgressPercentage[downloadPart.partNumber] = 100;
-
-        for (DownloadPart part : totalDownloadParts)
-            if (part.downloadStatus != COMPLETE) return;
-
-        model.deleteFromDisk(DownloadModel.FILE_FORMAT);
-        model.isRunning = false;
-        model.extraText = "";
-        model.changeToCompleteModel();
-
-        showSystemNotification(true);
-
-        updateDownloadStatus(CLOSE);
-        updateDownloadStatus(COMPLETE);
-
-        //vibrate the notification with the setting vibrator strength.
-        Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-        vibrator.vibrate(30);
-
-        trackDownloadInfo(context, model);
     }
 
 

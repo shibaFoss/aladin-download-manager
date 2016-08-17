@@ -3,29 +3,29 @@
 
     <style name="style_txt_action_bar">
         <item name="android:textSize">@dimen/sp_20</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="style_txt_title">
         <item name="android:textSize">@dimen/sp_19</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
     </style>
 
     <style name="style_txt_dialog_sub_title" parent="style_txt_title">
-        <item name="android:textSize">@dimen/sp_17</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textSize">@dimen/sp_16</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
     </style>
 
     <style name="style_txt_dialog_bnt" parent="style_txt_title">
         <item name="android:clickable">true</item>
-        <item name="android:textSize">@dimen/sp_18</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textSize">@dimen/sp_17</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/black_light</item>
         <item name="android:background">@drawable/ic_button_press</item>
@@ -34,17 +34,17 @@
     <style name="style_txt_dialog_input">
         <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textColor">@color/black_light</item>
         <item name="android:padding">@dimen/dp_5</item>
     </style>
 
     <style name="style_txt_dialog_normal">
         <item name="android:textStyle">normal</item>
-        <item name="android:textScaleX">.9</item>
+        <item name="android:textScaleX">1</item>
         <item name="android:textColor">@color/black_light</item>
         <item name="android:padding">@dimen/dp_5</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/sp_16</item>
         <item name="android:lineSpacingExtra">2dp</item>
     </style>
 

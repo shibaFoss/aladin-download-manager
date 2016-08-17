@@ -18,11 +18,11 @@
 
     <application
         android:name="main.app.App"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name_short"
-        android:theme="@style/application_theme"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-        android:screenOrientation="portrait">
+        android:screenOrientation="portrait"
+        android:theme="@style/application_theme">
 
         <!-- Ad Services Tags -->
         <meta-data
@@ -35,8 +35,8 @@
 
         <!-- Main Screen -->
         <activity
-            android:launchMode="standard"
             android:name="main.screens.main_screen.MainScreen"
+            android:launchMode="standard"
             android:noHistory="false">
 
             <intent-filter>
@@ -64,9 +64,9 @@
 
         <!-- Feedback Screen -->
         <activity
+            android:name="main.screens.main_screen.feedback_screen.FeedbackScreen"
             android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustResize"
-            android:name="main.screens.main_screen.feedback_screen.FeedbackScreen"/>
+            android:windowSoftInputMode="adjustResize"/>
 
         <!-- DownloadService -->
         <service
@@ -78,26 +78,21 @@
 
         <!-- Popup Download Screen -->
         <activity
+            android:name="main.screens.popup_screen.DownloadPopupScreen"
+            android:excludeFromRecents="true"
+            android:exported="true"
             android:label=""
             android:launchMode="singleTop"
-            android:name="main.screens.popup_screen.DownloadPopupScreen"
-            android:exported="true"
-            android:excludeFromRecents="true"
+            android:noHistory="true"
             android:taskAffinity=""
-            android:theme="@style/download_popup_screen_theme"
-            android:noHistory="true"/>
+            android:theme="@style/download_popup_screen_theme"/>
 
         <!-- About Activity -->
         <activity
+            android:name="main.screens.about_us_screen.AboutUsScreen"
             android:launchMode="singleTop"
-            android:name="main.screens.about_us_screen.AboutAppScreen"
             android:noHistory="false"/>
 
-        <!-- About Activity -->
-        <activity
-            android:launchMode="standard"
-            android:name="main.screens.developer_story_screen.DeveloperStoryScreen"
-            android:noHistory="false"/>
 
     </application>
 </manifest>

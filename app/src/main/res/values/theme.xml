@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- color_primary : 500 | color_primary_dark : 700 | border : 300 | floating : 600 | baseScreen bg : 50 -->
-    <color name="color_primary">@color/title_color</color>
-    <color name="color_primary_dark">#ff1e232f</color>
+    <color name="color_primary">#303f9f</color>
+    <color name="color_primary_dark">#303f9f</color>
     <color name="color_border">#0775b2ff</color>
     <color name="color_border_deep">#aee0e0e0</color>
     <color name="color_floating">#ff349ac0</color>
     <color name="color_floating_pressed">#ff2842d2</color>
     <color name="color_tab_inactive">#8C9EFF</color>
 
+
     <style name="application_theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
     </style>
 
     <style name="download_popup_screen_theme" parent="Theme.AppCompat.Dialog">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
     </style>
-
 
     <style name="dialog_animation">
         <item name="android:windowEnterAnimation">@anim/slide_up_anim</item>

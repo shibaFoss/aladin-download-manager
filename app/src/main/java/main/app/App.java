@@ -1,6 +1,11 @@
 package main.app;
 
 import android.app.Application;
+
+import java.io.File;
+import java.io.Serializable;
+
+import libs.remember_lib.Remember;
 import main.data_holder.BookmarkLoader;
 import main.download_manager.DownloadSystem;
 import main.parse.ParseServer;
@@ -8,10 +13,6 @@ import main.screens.music_screen.AudioManager;
 import main.settings.OnReadingFileListener;
 import main.settings.UserSettings;
 import main.user_tracking.UserTracker;
-import remember_lib.Remember;
-
-import java.io.File;
-import java.io.Serializable;
 
 public class App extends Application implements Serializable {
 
@@ -48,24 +49,6 @@ public class App extends Application implements Serializable {
         audioManager = new AudioManager(this);
     }
 
-
-    public AudioManager getAudioManager() {
-        if (audioManager == null) {
-            audioManager = new AudioManager(this);
-        }
-        return this.audioManager;
-    }
-
-
-    public UserSettings getUserSettings() {
-        if (this.userSettings == null) {
-            return new UserSettings();
-        } else {
-            return this.userSettings;
-        }
-    }
-
-
     private void initUserAccount() {
         UserSettings.readFromDisk(new OnReadingFileListener() {
             @Override
@@ -80,27 +63,37 @@ public class App extends Application implements Serializable {
         });
     }
 
-
-    public BookmarkLoader getBookmarkLoader() {
-        return bookmarkLoader;
-    }
-
-
-    public DownloadSystem getDownloadSystem() {
-        return downloadSystem;
-    }
-
-
     private void initBookmarkLoader() {
         bookmarkLoader = BookmarkLoader.readFromDisk();
     }
-
 
     private void initDownloadSystem() {
         downloadSystem = new DownloadSystem();
         downloadSystem.prepare(this);
     }
 
+    public AudioManager getAudioManager() {
+        if (audioManager == null) {
+            audioManager = new AudioManager(this);
+        }
+        return this.audioManager;
+    }
+
+    public UserSettings getUserSettings() {
+        if (this.userSettings == null) {
+            return new UserSettings();
+        } else {
+            return this.userSettings;
+        }
+    }
+
+    public BookmarkLoader getBookmarkLoader() {
+        return bookmarkLoader;
+    }
+
+    public DownloadSystem getDownloadSystem() {
+        return downloadSystem;
+    }
 
     public UserTracker getUserTracker() {
         if (userTracker == null) {

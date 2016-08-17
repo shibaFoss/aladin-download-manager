@@ -3,13 +3,14 @@ package main.screens.main_screen.setting_screen;
 import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
-import async_job.AsyncJob;
+
+import libs.async_job.AsyncJob;
 import main.dialog_factory.ProgressDialog;
 import main.dialog_factory.YesNoDialog;
 import main.settings.UserSettings;
 
-import static async_job.AsyncJob.doInBackground;
-import static async_job.AsyncJob.doInMainThread;
+import static libs.async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInMainThread;
 
 //Helper class that helps receiving the extra setting's on_click event.
 public class MoreSettingClickHandler implements View.OnClickListener {
@@ -34,6 +35,60 @@ public class MoreSettingClickHandler implements View.OnClickListener {
         else if (view.getId() == settingScreen.userAgent.getId()) userAgent();
         else if (view.getId() == settingScreen.urlFilter.getId()) urlFilter();
         else if (view.getId() == settingScreen.urlFilterToggle.getId()) urlFilter();
+    }
+
+    private void autoDownloadPart() {
+        final UserSettings userSettings = getUserSettings();
+        if (userSettings.isSmartDownload()) userSettings.setSmartDownload(false);
+        else userSettings.setSmartDownload(true);
+
+        settingScreen.smartDownloadToggle.setChecked(userSettings.isSmartDownload());
+    }
+
+    private void autoFileCatalog() {
+        final UserSettings userSettings = getUserSettings();
+        if (userSettings.isFileCatalog()) userSettings.setFileCatalog(false);
+        else userSettings.setFileCatalog(true);
+
+        settingScreen.fileCatalogToggle.setChecked(userSettings.isFileCatalog());
+    }
+
+    private void downloadBufferSize() {
+        new BufferSizeEditor(settingScreen.getMainScreen()).show();
+    }
+
+    private void runningDownloads() {
+        new RunningDownlaodEditor(settingScreen.getMainScreen()).show();
+    }
+
+    private void progressInterval() {
+        new UiProgressIntervalEditor(settingScreen.getMainScreen()).show();
+    }
+
+    private void pauseAfterError() {
+        new PauseAfterErrorEditor(settingScreen.getMainScreen()).show();
+    }
+
+    private void downloadViaWfi() {
+        final UserSettings setting = getUserSettings();
+        if (setting.isOnlyWifi()) setting.setOnlyWifi(false);
+        else setting.setOnlyWifi(true);
+        settingScreen.downloadViaWifiToggle.setChecked(setting.isOnlyWifi());
+    }
+
+    private void userAgent() {
+        new UserAgentEditor(settingScreen).show();
+    }
+
+    private void urlFilter() {
+        final UserSettings setting = getUserSettings();
+        if (setting.isUrlFilter()) setting.setUrlFilter(false);
+        else setting.setUrlFilter(true);
+        settingScreen.urlFilterToggle.setChecked(setting.isUrlFilter());
+    }
+
+    private UserSettings getUserSettings() {
+        return settingScreen.getMainScreen().app.getUserSettings();
     }
 
     private void resetSetting() {
@@ -76,59 +131,5 @@ public class MoreSettingClickHandler implements View.OnClickListener {
 
         yesNoDialog.setMessage("Do you want to reset all the settings ?");
         yesNoDialog.show();
-    }
-
-    private void urlFilter() {
-        final UserSettings setting = getUserSettings();
-        if (setting.isUrlFilter()) setting.setUrlFilter(false);
-        else setting.setUrlFilter(true);
-        settingScreen.urlFilterToggle.setChecked(setting.isUrlFilter());
-    }
-
-    private void userAgent() {
-        new UserAgentEditor(settingScreen).show();
-    }
-
-    private UserSettings getUserSettings() {
-        return settingScreen.getMainScreen().app.getUserSettings();
-    }
-
-    private void downloadViaWfi() {
-        final UserSettings setting = getUserSettings();
-        if (setting.isOnlyWifi()) setting.setOnlyWifi(false);
-        else setting.setOnlyWifi(true);
-        settingScreen.downloadViaWifiToggle.setChecked(setting.isOnlyWifi());
-    }
-
-    private void pauseAfterError() {
-        new PauseAfterErrorEditor(settingScreen.getMainScreen()).show();
-    }
-
-    private void progressInterval() {
-        new UiProgressIntervalEditor(settingScreen.getMainScreen()).show();
-    }
-
-    private void runningDownloads() {
-        new RunningDownlaodEditor(settingScreen.getMainScreen()).show();
-    }
-
-    private void downloadBufferSize() {
-        new BufferSizeEditor(settingScreen.getMainScreen()).show();
-    }
-
-    private void autoFileCatalog() {
-        final UserSettings userSettings = getUserSettings();
-        if (userSettings.isFileCatalog()) userSettings.setFileCatalog(false);
-        else userSettings.setFileCatalog(true);
-
-        settingScreen.fileCatalogToggle.setChecked(userSettings.isFileCatalog());
-    }
-
-    private void autoDownloadPart() {
-        final UserSettings userSettings = getUserSettings();
-        if (userSettings.isSmartDownload()) userSettings.setSmartDownload(false);
-        else userSettings.setSmartDownload(true);
-
-        settingScreen.smartDownloadToggle.setChecked(userSettings.isSmartDownload());
     }
 }

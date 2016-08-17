@@ -1,21 +1,22 @@
 package main.settings;
 
-import main.app.App;
-import main.data_holder.BaseWritableObject;
-
 import java.io.File;
 import java.io.Serializable;
 
+import main.app.App;
+import main.data_holder.BaseWritableObject;
+
 import static android.os.Environment.getExternalStorageDirectory;
-import static async_job.AsyncJob.*;
+import static libs.async_job.AsyncJob.BackgroundJob;
+import static libs.async_job.AsyncJob.MainThreadJob;
+import static libs.async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInMainThread;
 
 /**
  * <b>UserSettings:</b> The class is extensively used by the app itself.
  * The class just do one thing : Save the user-settings and read the settings from the sdcard.
  * <p>
  * You can get the intense on the class from the {@link App#getUserSettings()} method.
- *
- * @author Shiba.
  */
 public final class UserSettings extends BaseWritableObject implements Serializable {
 
@@ -98,18 +99,6 @@ public final class UserSettings extends BaseWritableObject implements Serializab
     }
 
     /**
-     * Save the object in the sdcard disk memory.
-     */
-    public void updateInDisk() {
-        doInBackground(new BackgroundJob() {
-            @Override
-            public void doInBackground() {
-                writeObject(UserSettings.this, settingPath, settingFileName);
-            }
-        });
-    }
-
-    /**
      * Reset all the settings to the default values.
      */
     public void resetDealtSettings() {
@@ -135,6 +124,23 @@ public final class UserSettings extends BaseWritableObject implements Serializab
         setDesktopMode(false);
         setSearchEngine(0);
         setWebUserAgent("");
+    }
+
+    public void setTurboBooster(boolean enableAutoSpeedController) {
+        this.turboBooster = enableAutoSpeedController;
+        this.updateInDisk();
+    }
+
+    /**
+     * Save the object in the sdcard disk memory.
+     */
+    public void updateInDisk() {
+        doInBackground(new BackgroundJob() {
+            @Override
+            public void doInBackground() {
+                writeObject(UserSettings.this, settingPath, settingFileName);
+            }
+        });
     }
 
     public String getDownloadPath() {
@@ -229,11 +235,6 @@ public final class UserSettings extends BaseWritableObject implements Serializab
 
     public boolean isEnableTurboBooster() {
         return turboBooster;
-    }
-
-    public void setTurboBooster(boolean enableAutoSpeedController) {
-        this.turboBooster = enableAutoSpeedController;
-        this.updateInDisk();
     }
 
     public boolean isOnlyWifi() {

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="58dp"
-    android:background="@color/action_bar"
+    android:background="?attr/colorPrimary"
     android:orientation="horizontal">
 
     <ImageButton
@@ -20,13 +19,15 @@
         android:src="@drawable/ic_navigation_arrow_back"/>
 
     <TextView
-        style="@style/style_txt_action_bar"
+        style="@style/style_txt_title"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/bnt_exit"
         android:layout_toEndOf="@+id/bnt_exit"
+        android:layout_toRightOf="@+id/bnt_exit"
         android:gravity="center_vertical"
         android:padding="@dimen/element_padding_8"
-        android:text="@string/about_us"/>
+        android:text="@string/about_us"
+        android:textColor="@color/white"
+        />
 
 </RelativeLayout>

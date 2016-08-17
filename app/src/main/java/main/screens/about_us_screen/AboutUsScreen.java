@@ -1,23 +1,21 @@
 package main.screens.about_us_screen;
 
-
-import android.content.res.Configuration;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 
 import net.fdm.R;
 
 import main.screens.BaseScreen;
 
-public class AboutAppScreen extends BaseScreen {
+/**
+ * The screen is responsible for showing the about details of the app and the project.
+ */
+public class AboutUsScreen extends BaseScreen {
 
     @Override
     public int getLayout() {
         return R.layout.screen_about_us;
-    }
-
-    @Override
-    public void onLayoutLoad() {
-
     }
 
     @Override
@@ -40,25 +38,17 @@ public class AboutAppScreen extends BaseScreen {
         exit();
     }
 
-    @Override
-    public void onClearMemory() {
-        freeMemory();
-    }
-
-    @Override
-    public void onScreenOptionChange(Configuration configuration) {
-
-    }
-
 
     public void onBackButtonClick(View view) {
         exit();
     }
 
-    private void freeMemory() {
-        unbindDrawables(findViewById(R.id.main_layout));
-        System.gc();
+    public void onProjectWebsiteClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://github.com/shibaFoss/aladin-download-manager"));
+        startActivity(intent);
     }
+
 }
 
 

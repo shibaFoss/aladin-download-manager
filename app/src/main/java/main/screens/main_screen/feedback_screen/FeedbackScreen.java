@@ -2,22 +2,23 @@ package main.screens.main_screen.feedback_screen;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
 import com.parse.ParseObject;
-import main.dialog_factory.YesNoDialog;
-import main.parse.ParseServer;
-import main.screens.BaseScreen;
-import main.utilities.DeviceTool;
+
 import net.fdm.R;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import main.dialog_factory.YesNoDialog;
+import main.parse.ParseServer;
+import main.screens.BaseScreen;
+import main.utilities.DeviceTool;
 
 public class FeedbackScreen extends BaseScreen {
     private boolean intentForRequestFeature = false;
@@ -30,7 +31,7 @@ public class FeedbackScreen extends BaseScreen {
     }
 
     @Override
-    public void onLayoutLoad() {
+    public void onAfterLayoutLoad() {
         Intent intent = getIntent();
         if (intent.getBooleanExtra("request_feature", false)) {
             intentForRequestFeature = true;
@@ -40,8 +41,8 @@ public class FeedbackScreen extends BaseScreen {
     }
 
     @Override
-    public void onAfterLayoutLoad() {
-
+    public void onExitScreen() {
+        confirmExit();
     }
 
     @Override
@@ -52,51 +53,6 @@ public class FeedbackScreen extends BaseScreen {
     @Override
     public void onResumeScreen() {
 
-    }
-
-    @Override
-    public void onExitScreen() {
-        confirmExit();
-    }
-
-    @Override
-    public void onClearMemory() {
-
-    }
-
-    @Override
-    public void onScreenOptionChange(Configuration configuration) {
-
-    }
-
-    private void init() {
-        TextView title = (TextView) findViewById(R.id.tool_bar_title);
-        name = (EditText) findViewById(R.id.name_edit);
-        email = (EditText) findViewById(R.id.email_edit);
-        feedbackMessage = (EditText) findViewById(R.id.feedback_edit);
-        feedbackMessage.setSingleLine(false);
-
-        advise = (RadioButton) findViewById(R.id.advise);
-        advise = (RadioButton) findViewById(R.id.advise);
-        needHelp = (RadioButton) findViewById(R.id.help);
-
-        if (intentForRequestFeature) {
-            title.setText("Request new feature");
-            advise.setChecked(true);
-            feedbackMessage.setHint("Tell us about your new idea.");
-        }
-    }
-
-    public void onSendClick(View view) {
-        if (!validateUserInformation()) return; //user did not write his/her information right.
-        sendFeedback();
-        vibrator.vibrate(20);
-        showSimpleHtmlMessageBox(getFeedbackReplyMessage());
-
-        //clear the inputs
-        name.setText("");
-        email.setText("");
-        feedbackMessage.setText("");
     }
 
     private void confirmExit() {
@@ -130,6 +86,35 @@ public class FeedbackScreen extends BaseScreen {
         return (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 
+    private void init() {
+        TextView title = (TextView) findViewById(R.id.tool_bar_title);
+        name = (EditText) findViewById(R.id.name_edit);
+        email = (EditText) findViewById(R.id.email_edit);
+        feedbackMessage = (EditText) findViewById(R.id.feedback_edit);
+        feedbackMessage.setSingleLine(false);
+
+        advise = (RadioButton) findViewById(R.id.advise);
+        advise = (RadioButton) findViewById(R.id.advise);
+        needHelp = (RadioButton) findViewById(R.id.help);
+
+        if (intentForRequestFeature) {
+            title.setText("Request new feature");
+            advise.setChecked(true);
+            feedbackMessage.setHint("Tell us about your new idea.");
+        }
+    }
+
+    public void onSendClick(View view) {
+        if (!validateUserInformation()) return; //user did not write his/her information right.
+        sendFeedback();
+        vibrator.vibrate(20);
+        showSimpleHtmlMessageBox(getFeedbackReplyMessage());
+
+        //clear the inputs
+        name.setText("");
+        email.setText("");
+        feedbackMessage.setText("");
+    }
 
     private boolean validateUserInformation() {
         String user_name = name.getText().toString();
@@ -170,8 +155,7 @@ public class FeedbackScreen extends BaseScreen {
 
             params.put("subject",
                     "Feedback of " + name.getText().toString() + " " + getString(R.string.app_name_short) +
-                            " version:" + getPackageManager().getPackageInfo(getPackageName(),
-                            PackageManager.SIGNATURE_MATCH).versionName);
+                            " version:" + getVersionName());
 
             params.put("originator", "aladin.support@softc.com");
             params.put("target", "shiba.spj@hotmail.com");

@@ -8,7 +8,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import async_job.AsyncJob.MainThreadJob;
+
+import net.fdm.R;
+
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
+import libs.async_job.AsyncJob.MainThreadJob;
 import main.app.App;
 import main.dialog_factory.MessageBox;
 import main.screens.main_screen.MainScreen;
@@ -17,12 +23,8 @@ import main.screens.main_screen.downloads_screen.CompleteDownloadScreen;
 import main.screens.main_screen.downloads_screen.DownloadRefreshLinker;
 import main.screens.main_screen.downloads_screen.RunningDownloadScreen;
 import main.utilities.DeviceTool;
-import net.fdm.R;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
-import static async_job.AsyncJob.doInMainThread;
+import static libs.async_job.AsyncJob.doInMainThread;
 import static main.utilities.FileCatalog.getDownloadDrawableBy;
 
 /**
@@ -68,171 +70,6 @@ public final class DownloadUiManager implements View.OnClickListener {
     }
 
     /**
-     * Inject the reference of {@link CompleteDownloadListAdapter} to this class. So that we can use it for
-     * updating its list of the complete download tasks.
-     *
-     * @param listAdapter the completeDownloadListAdapter.
-     */
-    public void injectCompleteDownloadListAdapter(CompleteDownloadListAdapter listAdapter) {
-        this.completeDownloadListAdapter = listAdapter;
-        this.completeDownloadListAdapter.setDataList(downloadSystem.getTotalCompleteDownloadModels());
-        updateCompleteDownloadList();
-    }
-
-    /**
-     * Inject the layoutContainer that will holds the incomplete download layouts.
-     *
-     * @param downloadListContainer the running fragment
-     */
-    public void injectInCompleteDownloadLayoutContainer(LinearLayout downloadListContainer) {
-        this.layoutContainerOfIncompleteTasks = downloadListContainer;
-    }
-
-    /**
-     * Same as {@link #addIncompleteDownloadLayout(LinearLayout, DownloadModel)}
-     * But this method create a new layout before calling its brother method.
-     *
-     * @param downloadModel the downloadModel will be used for getting the download progress information.
-     */
-    public void addIncompleteDownloadLayout(DownloadModel downloadModel) {
-        LinearLayout downloadView = generateDownloadLayout(LayoutInflater.from(app));
-        addIncompleteDownloadLayout(downloadView, downloadModel);
-    }
-
-
-    /**
-     * RunningFragment runs on main thread that is responsible for showing views to user. We need a reference
-     * of this class so that we can use it for doing ui related work from this background thread.
-     *
-     * @param runningDownloadScreen reference of running fragment.
-     */
-    public void injectDownloadRunningScreen(RunningDownloadScreen runningDownloadScreen) {
-        this.runningDownloadScreen = runningDownloadScreen;
-    }
-
-    /**
-     * Add a new incomplete download layout to the {@link #incompleteDownloadLayouts}.
-     *
-     * @param downloadLayout layout that will be used for showing the download progress.
-     * @param downloadModel  the downloadModel will be used for getting the download information.
-     */
-    public void addIncompleteDownloadLayout(LinearLayout downloadLayout, DownloadModel downloadModel) {
-        if (incompleteDownloadLayouts != null)
-            if (downloadLayout != null) {
-                this.configureDownloadLayout(downloadLayout, downloadModel);
-                this.incompleteDownloadLayouts.add(downloadLayout);
-                this.notifyDownloadDataChange();
-            }
-    }
-
-    /**
-     * Remove a incomplete download layout from the {@link #incompleteDownloadLayouts}
-     *
-     * @param index the index of the removal download layout.
-     */
-    public void removeIncompleteDownloadLayout(int index) {
-        if (this.incompleteDownloadLayouts != null) {
-            final LinearLayout downloadLayout = this.incompleteDownloadLayouts.remove(index);
-
-            if (downloadLayout != null) {
-                if (this.layoutContainerOfIncompleteTasks != null) {
-                    doInMainThread(new MainThreadJob() {
-                        @Override
-                        public void doInUIThread() {
-                            layoutContainerOfIncompleteTasks.removeView(downloadLayout);
-                            notifyDownloadDataChange();
-                        }
-                    });
-                }
-            }
-        }
-    }
-
-    /**
-     * Update the complete download task list.
-     */
-    public void updateCompleteDownloadList() {
-        if (this.completeDownloadListAdapter != null) {
-            doInMainThread(new MainThreadJob() {
-                @Override
-                public void doInUIThread() {
-                    completeDownloadListAdapter.notifyDataChange();
-                }
-            });
-        }
-    }
-
-    /**
-     * This method updates the {@link #layoutContainerOfIncompleteTasks}
-     * with {@link #incompleteDownloadLayouts} from the scratch.
-     * <p/>
-     * This method is very important when something goes wrong or the array data has been change
-     * and the container did not get the change to update itself with new array items.
-     */
-    public void notifyDownloadDataChange() {
-        if (layoutContainerOfIncompleteTasks != null) {
-            doInMainThread(new MainThreadJob() {
-                @Override
-                public void doInUIThread() {
-                    layoutContainerOfIncompleteTasks.removeAllViews();
-                    addAllIncompleteDownloadViewsToDownloadContainer();
-                }
-            });
-        }
-    }
-
-    /**
-     * This method gets a callback when a downloadLayout is clicked by a user.
-     *
-     * @param downloadLayout the downloadLayout which got the clicked.
-     */
-    @Override
-    public void onClick(View downloadLayout) {
-        if (downloadLayout.getId() == R.id.download_view) {
-            clickEventOf(downloadLayout);
-        }
-    }
-
-    private void clickEventOf(View downloadLayout) {
-        LinearLayout downloadView = (LinearLayout) downloadLayout.getParent();
-
-        //Get the layout id of the  downloadLayout.
-        int index = (downloadView != null) ? downloadView.getId() : -1;
-
-        //Check if the running fragment is alive or not.
-        if (this.runningDownloadScreen != null) {
-            if (index != -1) {
-                DownloadModel downloadModel = downloadSystem.getTotalIncompleteDownloadModels().get(index);
-                if (downloadModel != null) {
-                    runningDownloadScreen.onClickDownloadItemView(downloadLayout, downloadModel);
-                }
-            }
-        }
-    }
-
-    //Update the downloadLayout wth the given downloadModel.
-    public void updateDownloadProgressWith(DownloadModel downloadModel) {
-        //the download view container from the running download screen is not alive,
-        // so we need to terminate further execution of this function.
-        if (layoutContainerOfIncompleteTasks == null) return;
-
-        if (incompleteDownloadLayouts.size() > 0) {
-            if (downloadModel != null) {
-                int downloadTaskPosition = downloadSystem.getTotalIncompleteDownloadModels().indexOf(downloadModel);
-
-                //index must be greater than -1
-                if (downloadTaskPosition > -1) {
-
-                    LinearLayout downloadLayout = incompleteDownloadLayouts.get(downloadTaskPosition);
-                    //The downloadLayout of the specific downloadModel is alive,
-                    //now we can update it with new updated information.
-                    if (downloadLayout != null) configureDownloadLayout(downloadLayout, downloadModel);
-                }
-            }
-        }
-    }
-
-    /**
      * This is the main method that initialize all the necessary things to start this class.
      */
     private void initialize() {
@@ -255,6 +92,20 @@ public final class DownloadUiManager implements View.OnClickListener {
     }
 
     /**
+     * Update the complete download task list.
+     */
+    public void updateCompleteDownloadList() {
+        if (this.completeDownloadListAdapter != null) {
+            doInMainThread(new MainThreadJob() {
+                @Override
+                public void doInUIThread() {
+                    completeDownloadListAdapter.notifyDataChange();
+                }
+            });
+        }
+    }
+
+    /**
      * Generate a fresh inflated view object from the layout.
      *
      * @param inflater the inflater reference object that will be needed for inflating the xml layout.
@@ -266,6 +117,20 @@ public final class DownloadUiManager implements View.OnClickListener {
         return downloadView;
     }
 
+    /**
+     * Add a new incomplete download layout to the {@link #incompleteDownloadLayouts}.
+     *
+     * @param downloadLayout layout that will be used for showing the download progress.
+     * @param downloadModel  the downloadModel will be used for getting the download information.
+     */
+    public void addIncompleteDownloadLayout(LinearLayout downloadLayout, DownloadModel downloadModel) {
+        if (incompleteDownloadLayouts != null)
+            if (downloadLayout != null) {
+                this.configureDownloadLayout(downloadLayout, downloadModel);
+                this.incompleteDownloadLayouts.add(downloadLayout);
+                this.notifyDownloadDataChange();
+            }
+    }
 
     private void configureDownloadLayout(LinearLayout downloadView, DownloadModel downloadModel) {
         TextView title;
@@ -300,6 +165,25 @@ public final class DownloadUiManager implements View.OnClickListener {
 
                 progressBars[index].setProgress(percentage);
             }
+        }
+    }
+
+    /**
+     * This method updates the {@link #layoutContainerOfIncompleteTasks}
+     * with {@link #incompleteDownloadLayouts} from the scratch.
+     * <p/>
+     * This method is very important when something goes wrong or the array data has been change
+     * and the container did not get the change to update itself with new array items.
+     */
+    public void notifyDownloadDataChange() {
+        if (layoutContainerOfIncompleteTasks != null) {
+            doInMainThread(new MainThreadJob() {
+                @Override
+                public void doInUIThread() {
+                    layoutContainerOfIncompleteTasks.removeAllViews();
+                    addAllIncompleteDownloadViewsToDownloadContainer();
+                }
+            });
         }
     }
 
@@ -359,6 +243,122 @@ public final class DownloadUiManager implements View.OnClickListener {
                 }
 
                 layoutContainerOfIncompleteTasks.addView(downloadView);
+            }
+        }
+    }
+
+    /**
+     * Inject the reference of {@link CompleteDownloadListAdapter} to this class. So that we can use it for
+     * updating its list of the complete download tasks.
+     *
+     * @param listAdapter the completeDownloadListAdapter.
+     */
+    public void injectCompleteDownloadListAdapter(CompleteDownloadListAdapter listAdapter) {
+        this.completeDownloadListAdapter = listAdapter;
+        this.completeDownloadListAdapter.setDataList(downloadSystem.getTotalCompleteDownloadModels());
+        updateCompleteDownloadList();
+    }
+
+    /**
+     * Inject the layoutContainer that will holds the incomplete download layouts.
+     *
+     * @param downloadListContainer the running fragment
+     */
+    public void injectInCompleteDownloadLayoutContainer(LinearLayout downloadListContainer) {
+        this.layoutContainerOfIncompleteTasks = downloadListContainer;
+    }
+
+    /**
+     * Same as {@link #addIncompleteDownloadLayout(LinearLayout, DownloadModel)}
+     * But this method create a new layout before calling its brother method.
+     *
+     * @param downloadModel the downloadModel will be used for getting the download progress information.
+     */
+    public void addIncompleteDownloadLayout(DownloadModel downloadModel) {
+        LinearLayout downloadView = generateDownloadLayout(LayoutInflater.from(app));
+        addIncompleteDownloadLayout(downloadView, downloadModel);
+    }
+
+    /**
+     * RunningFragment runs on main thread that is responsible for showing views to user. We need a reference
+     * of this class so that we can use it for doing ui related work from this background thread.
+     *
+     * @param runningDownloadScreen reference of running fragment.
+     */
+    public void injectDownloadRunningScreen(RunningDownloadScreen runningDownloadScreen) {
+        this.runningDownloadScreen = runningDownloadScreen;
+    }
+
+    /**
+     * Remove a incomplete download layout from the {@link #incompleteDownloadLayouts}
+     *
+     * @param index the index of the removal download layout.
+     */
+    public void removeIncompleteDownloadLayout(int index) {
+        if (this.incompleteDownloadLayouts != null) {
+            final LinearLayout downloadLayout = this.incompleteDownloadLayouts.remove(index);
+
+            if (downloadLayout != null) {
+                if (this.layoutContainerOfIncompleteTasks != null) {
+                    doInMainThread(new MainThreadJob() {
+                        @Override
+                        public void doInUIThread() {
+                            layoutContainerOfIncompleteTasks.removeView(downloadLayout);
+                            notifyDownloadDataChange();
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    /**
+     * This method gets a callback when a downloadLayout is clicked by a user.
+     *
+     * @param downloadLayout the downloadLayout which got the clicked.
+     */
+    @Override
+    public void onClick(View downloadLayout) {
+        if (downloadLayout.getId() == R.id.download_view) {
+            clickEventOf(downloadLayout);
+        }
+    }
+
+    private void clickEventOf(View downloadLayout) {
+        LinearLayout downloadView = (LinearLayout) downloadLayout.getParent();
+
+        //Get the layout id of the  downloadLayout.
+        int index = (downloadView != null) ? downloadView.getId() : -1;
+
+        //Check if the running fragment is alive or not.
+        if (this.runningDownloadScreen != null) {
+            if (index != -1) {
+                DownloadModel downloadModel = downloadSystem.getTotalIncompleteDownloadModels().get(index);
+                if (downloadModel != null) {
+                    runningDownloadScreen.onClickDownloadItemView(downloadLayout, downloadModel);
+                }
+            }
+        }
+    }
+
+    //Update the downloadLayout wth the given downloadModel.
+    public void updateDownloadProgressWith(DownloadModel downloadModel) {
+        //the download view container from the running download screen is not alive,
+        // so we need to terminate further execution of this function.
+        if (layoutContainerOfIncompleteTasks == null) return;
+
+        if (incompleteDownloadLayouts.size() > 0) {
+            if (downloadModel != null) {
+                int downloadTaskPosition = downloadSystem.getTotalIncompleteDownloadModels().indexOf(downloadModel);
+
+                //index must be greater than -1
+                if (downloadTaskPosition > -1) {
+
+                    LinearLayout downloadLayout = incompleteDownloadLayouts.get(downloadTaskPosition);
+                    //The downloadLayout of the specific downloadModel is alive,
+                    //now we can update it with new updated information.
+                    if (downloadLayout != null) configureDownloadLayout(downloadLayout, downloadModel);
+                }
             }
         }
     }

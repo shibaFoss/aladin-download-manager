@@ -3,12 +3,14 @@ package main.screens.main_screen;
 import android.app.Dialog;
 import android.view.View;
 import android.widget.TextView;
+
+import net.fdm.R;
+
+import libs.remember_lib.Remember;
 import main.dialog_factory.YesNoDialog;
 import main.key_database.KeyStore;
 import main.screens.main_screen.feedback_screen.FeedbackScreen;
 import main.utilities.UiUtils;
-import net.fdm.R;
-import remember_lib.Remember;
 
 public class RatingPrompt implements View.OnClickListener {
 
@@ -23,24 +25,6 @@ public class RatingPrompt implements View.OnClickListener {
         init();
     }
 
-    public void onClick(View view) {
-        if (view.getId() == happy.getId()) {
-            happyClick();
-        } else if (view.getId() == notHappy.getId()) {
-            notHappyClick();
-        }
-    }
-
-    public void show() {
-        if (dialog != null)
-            dialog.show();
-    }
-
-    public void close() {
-        if (dialog != null)
-            dialog.dismiss();
-    }
-
     private void init() {
         dialog = UiUtils.generateNewDialog(mainScreen, R.layout.rate_us_dialog);
         TextView title = (TextView) dialog.findViewById(R.id.title);
@@ -49,6 +33,14 @@ public class RatingPrompt implements View.OnClickListener {
 
         happy.setOnClickListener(this);
         notHappy.setOnClickListener(this);
+    }
+
+    public void onClick(View view) {
+        if (view.getId() == happy.getId()) {
+            happyClick();
+        } else if (view.getId() == notHappy.getId()) {
+            notHappyClick();
+        }
     }
 
     private void happyClick() {
@@ -109,6 +101,16 @@ public class RatingPrompt implements View.OnClickListener {
         confirmDialog.yesButton.setText(mainScreen.getString(R.string.ok_sure));
         confirmDialog.noButton.setText(mainScreen.getString(R.string.no_thanks));
         confirmDialog.show();
+    }
+
+    public void close() {
+        if (dialog != null)
+            dialog.dismiss();
+    }
+
+    public void show() {
+        if (dialog != null)
+            dialog.show();
     }
 
     public RatingPrompt setForExit() {

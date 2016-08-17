@@ -3,9 +3,11 @@ package main.dialog_factory;
 import android.app.Dialog;
 import android.content.Context;
 import android.widget.TextView;
-import async_job.AsyncJob;
-import main.utilities.UiUtils;
+
 import net.fdm.R;
+
+import libs.async_job.AsyncJob;
+import main.utilities.UiUtils;
 
 /**
  * This class very useful if you want to show a progressDialog
@@ -28,14 +30,6 @@ public final class ProgressDialog {
         progressMessage.setText(progressText);
     }
 
-    public void show() {
-        try {
-            this.dialog.show();
-        } catch (Exception error) {
-            error.printStackTrace();
-        }
-    }
-
     public void showInMainThread() {
         AsyncJob.doInMainThread(new AsyncJob.MainThreadJob() {
             @Override
@@ -45,8 +39,12 @@ public final class ProgressDialog {
         });
     }
 
-    public void close() {
-        this.dialog.dismiss();
+    public void show() {
+        try {
+            this.dialog.show();
+        } catch (Exception error) {
+            error.printStackTrace();
+        }
     }
 
     public void closeInMainThread() {
@@ -55,6 +53,10 @@ public final class ProgressDialog {
         } catch (Exception error) {
             error.printStackTrace();
         }
+    }
+
+    public void close() {
+        this.dialog.dismiss();
     }
 
     public Dialog getDialog() {

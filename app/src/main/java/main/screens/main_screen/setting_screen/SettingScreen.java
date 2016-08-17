@@ -8,36 +8,34 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-import main.dialog_factory.FilePickerDialog;
-import main.download_manager.DownloadService;
-import main.download_manager.DownloadSystem;
-import main.screens.about_us_screen.AboutAppScreen;
-import main.screens.main_screen.BaseNestedScreen;
-import main.screens.main_screen.feedback_screen.FeedbackScreen;
-import main.settings.UserSettings;
-import main.utilities.DeviceTool;
+
 import net.fdm.R;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import main.dialog_factory.FilePickerDialog;
+import main.download_manager.DownloadService;
+import main.download_manager.DownloadSystem;
+import main.screens.about_us_screen.AboutUsScreen;
+import main.screens.main_screen.BaseNestedScreen;
+import main.screens.main_screen.feedback_screen.FeedbackScreen;
+import main.settings.UserSettings;
+import main.utilities.DeviceTool;
+
 public class SettingScreen extends BaseNestedScreen implements View.OnClickListener {
 
     public View layoutView;
-    private ImageButton exitButton;
-
     public TextView downloadDirectory, turboBooster, autoResume, clipboardMonitor;
     public TextView
             downloadParts, smartDownload, fileCatalog,
             bufferSize, maximumRunningTask, progressInterval,
             pauseAfterError, downloadViaWifi, userAgent, urlFilter;
-
     public TextView bluetoothShare, inviteFriends, feedback, requestFeature, rateUs, aboutUs;
-
     public ToggleButton smartDownloadToggle, clipboardMonitorToggle, fileCatalogToggle, downloadViaWifiToggle, urlFilterToggle,
             turboBoosterToggle, autoResumeToggle;
-
+    private ImageButton exitButton;
     private MoreSettingClickHandler moreSettingClickHandler;
 
     @Override
@@ -46,14 +44,14 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
     }
 
     @Override
-    protected void onViewCreating(View view) {
-        //nothing to do here.
-    }
-
-    @Override
     protected void onAfterLayoutLoad(View layoutView, Bundle savedInstanceState) {
         this.layoutView = layoutView;
         this.init();
+    }
+
+    @Override
+    protected void onViewCreating(View view) {
+        //nothing to do here.
     }
 
     private void init() {
@@ -66,64 +64,6 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
         initClickEvents();
 
         updateToggleCheckStatus();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == downloadDirectory.getId()) downloadDirectory();
-        else if (view.getId() == turboBooster.getId()) turboBooster();
-        else if (view.getId() == turboBoosterToggle.getId()) turboBooster();
-        else if (view.getId() == autoResume.getId() || view.getId() == autoResumeToggle.getId()) autoResume();
-
-        else if (view.getId() == clipboardMonitor.getId()) clipboardMonitor();
-        else if (view.getId() == clipboardMonitorToggle.getId()) clipboardMonitor();
-
-        else if (view.getId() == downloadParts.getId()) downloadParts();
-
-        else if (view.getId() == bluetoothShare.getId()) bluetoothShare();
-        else if (view.getId() == inviteFriends.getId()) inviteFriends();
-        else if (view.getId() == feedback.getId()) feedback();
-        else if (view.getId() == requestFeature.getId()) requestFeature();
-        else if (view.getId() == rateUs.getId()) rateUs();
-        else if (view.getId() == aboutUs.getId()) aboutUs();
-        else if (view.getId() == exitButton.getId()) exitButton();
-    }
-
-    private void exitButton() {
-        DownloadSystem downloadSystem = getMainScreen().app.getDownloadSystem();
-        int runningTask = downloadSystem.getTotalNumberOfRunningTask();
-
-        if (runningTask == 0) {
-            DownloadService downloadService = downloadSystem.getDownloadService();
-            downloadService.stopForeground();
-            downloadService.stopService(new Intent(getMainScreen(), DownloadService.class));
-        }
-        downloadSystem.prepare(getMainScreen().app);
-        getMainScreen().finish();
-    }
-
-    //Update all the toggle button's check status depending on current user settings.
-    public void updateToggleCheckStatus() {
-        final UserSettings userSettings = getMainScreen().app.getUserSettings();
-
-        turboBoosterToggle.setChecked(userSettings.isEnableTurboBooster());
-        autoResumeToggle.setChecked(userSettings.isAutoResume());
-        clipboardMonitorToggle.setChecked(userSettings.isClipboardMonitoring());
-
-        smartDownloadToggle.setChecked(userSettings.isSmartDownload());
-        fileCatalogToggle.setChecked(userSettings.isFileCatalog());
-        downloadViaWifiToggle.setChecked(userSettings.isOnlyWifi());
-        urlFilterToggle.setChecked(userSettings.isUrlFilter());
     }
 
     private void initDownloadSettings() {
@@ -211,72 +151,49 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
         aboutUs.setOnClickListener(this);
     }
 
-    private void aboutUs() {
-        getMainScreen().startActivity(AboutAppScreen.class);
+    //Update all the toggle button's check status depending on current user settings.
+    public void updateToggleCheckStatus() {
+        final UserSettings userSettings = getMainScreen().app.getUserSettings();
+
+        turboBoosterToggle.setChecked(userSettings.isEnableTurboBooster());
+        autoResumeToggle.setChecked(userSettings.isAutoResume());
+        clipboardMonitorToggle.setChecked(userSettings.isClipboardMonitoring());
+
+        smartDownloadToggle.setChecked(userSettings.isSmartDownload());
+        fileCatalogToggle.setChecked(userSettings.isFileCatalog());
+        downloadViaWifiToggle.setChecked(userSettings.isOnlyWifi());
+        urlFilterToggle.setChecked(userSettings.isUrlFilter());
     }
 
-    private void rateUs() {
-        getMainScreen().gotoPlayStore();
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
-    private void requestFeature() {
-        Intent intent = new Intent(getMainScreen(), FeedbackScreen.class);
-        intent.putExtra("request_feature", true);
-        startActivity(intent);
-        getMainScreen().overridePendingTransition(R.anim.screen_enter_anim, R.anim.screen_out_anim);
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
-    private void feedback() {
-        getMainScreen().startActivity(FeedbackScreen.class);
-    }
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == downloadDirectory.getId()) downloadDirectory();
+        else if (view.getId() == turboBooster.getId()) turboBooster();
+        else if (view.getId() == turboBoosterToggle.getId()) turboBooster();
+        else if (view.getId() == autoResume.getId() || view.getId() == autoResumeToggle.getId()) autoResume();
 
-    private void inviteFriends() {
-        new FriendInvite(getMainScreen()).show();
-    }
+        else if (view.getId() == clipboardMonitor.getId()) clipboardMonitor();
+        else if (view.getId() == clipboardMonitorToggle.getId()) clipboardMonitor();
 
-    /**
-     * Share the apk file of the application via bluetooth.
-     */
-    private void bluetoothShare() {
-        try {
-            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
-            intent.addCategory(Intent.CATEGORY_LAUNCHER);
-            intent.setPackage(getMainScreen().getPackageName());
+        else if (view.getId() == downloadParts.getId()) downloadParts();
 
-            final List matchingApkInfo = getMainScreen().getPackageManager().queryIntentActivities(intent, 0);
-            for (Object object : matchingApkInfo) {
-                ResolveInfo info = (ResolveInfo) object;
-                File apkFile = new File(info.activityInfo.applicationInfo.publicSourceDir);
-                File shareApkFile = new File(UserSettings.applicationPath,
-                        "Aladin DM" + getMainScreen().getVersionName() + ".apk");
-                try {
-                    DeviceTool.copy(apkFile, shareApkFile);
-                    shareViaBluetooth(shareApkFile);
-                } catch (IOException error) {
-                    error.printStackTrace();
-                    shareViaBluetooth(apkFile);
-                }
-            }
-        } catch (Exception error) {
-            error.printStackTrace();
-            getMainScreen().showSimpleMessageBox("Your device does not support this feature.");
-        }
-    }
-
-    private void shareViaBluetooth(File file) {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-
-        final List matchingApkInfo = getMainScreen().getPackageManager().queryIntentActivities(intent, 0);
-        for (Object object : matchingApkInfo) {
-            ResolveInfo info = (ResolveInfo) object;
-            String appName = (String) info.loadLabel(getMainScreen().getPackageManager());
-            if (appName.toLowerCase().equals("bluetooth")) {
-                intent.setPackage(info.activityInfo.packageName);
-                getMainScreen().startActivity(intent);
-            }
-        }
+        else if (view.getId() == bluetoothShare.getId()) bluetoothShare();
+        else if (view.getId() == inviteFriends.getId()) inviteFriends();
+        else if (view.getId() == feedback.getId()) feedback();
+        else if (view.getId() == requestFeature.getId()) requestFeature();
+        else if (view.getId() == rateUs.getId()) rateUs();
+        else if (view.getId() == aboutUs.getId()) aboutUs();
+        else if (view.getId() == exitButton.getId()) exitButton();
     }
 
     private void downloadDirectory() {
@@ -320,6 +237,87 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
 
     private void downloadParts() {
         new DownloadPartEditor(getMainScreen()).show();
+    }
+
+    /**
+     * Share the apk file of the application via bluetooth.
+     */
+    private void bluetoothShare() {
+        try {
+            final Intent intent = new Intent(Intent.ACTION_MAIN, null);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.setPackage(getMainScreen().getPackageName());
+
+            final List matchingApkInfo = getMainScreen().getPackageManager().queryIntentActivities(intent, 0);
+            for (Object object : matchingApkInfo) {
+                ResolveInfo info = (ResolveInfo) object;
+                File apkFile = new File(info.activityInfo.applicationInfo.publicSourceDir);
+                File shareApkFile = new File(UserSettings.applicationPath,
+                        "Aladin DM" + getMainScreen().getVersionName() + ".apk");
+                try {
+                    DeviceTool.copy(apkFile, shareApkFile);
+                    shareViaBluetooth(shareApkFile);
+                } catch (IOException error) {
+                    error.printStackTrace();
+                    shareViaBluetooth(apkFile);
+                }
+            }
+        } catch (Exception error) {
+            error.printStackTrace();
+            getMainScreen().showSimpleMessageBox("Your device does not support this feature.");
+        }
+    }
+
+    private void inviteFriends() {
+        new FriendInvite(getMainScreen()).show();
+    }
+
+    private void feedback() {
+        getMainScreen().startActivity(FeedbackScreen.class);
+    }
+
+    private void requestFeature() {
+        Intent intent = new Intent(getMainScreen(), FeedbackScreen.class);
+        intent.putExtra("request_feature", true);
+        startActivity(intent);
+        getMainScreen().overridePendingTransition(R.anim.screen_enter_anim, R.anim.screen_out_anim);
+    }
+
+    private void rateUs() {
+        getMainScreen().gotoPlayStore();
+    }
+
+    private void aboutUs() {
+        getMainScreen().startActivity(AboutUsScreen.class);
+    }
+
+    private void exitButton() {
+        DownloadSystem downloadSystem = getMainScreen().app.getDownloadSystem();
+        int runningTask = downloadSystem.getTotalNumberOfRunningTask();
+
+        if (runningTask == 0) {
+            DownloadService downloadService = downloadSystem.getDownloadService();
+            downloadService.stopForeground();
+            downloadService.stopService(new Intent(getMainScreen(), DownloadService.class));
+        }
+        downloadSystem.prepare(getMainScreen().app);
+        getMainScreen().finish();
+    }
+
+    private void shareViaBluetooth(File file) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+
+        final List matchingApkInfo = getMainScreen().getPackageManager().queryIntentActivities(intent, 0);
+        for (Object object : matchingApkInfo) {
+            ResolveInfo info = (ResolveInfo) object;
+            String appName = (String) info.loadLabel(getMainScreen().getPackageManager());
+            if (appName.toLowerCase().equals("bluetooth")) {
+                intent.setPackage(info.activityInfo.packageName);
+                getMainScreen().startActivity(intent);
+            }
+        }
     }
 
 }

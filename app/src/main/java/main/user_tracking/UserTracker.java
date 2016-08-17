@@ -1,13 +1,13 @@
 package main.user_tracking;
 
+import java.io.Serializable;
+
+import libs.remember_lib.Remember;
 import main.app.App;
 import main.key_database.KeyStore;
 import main.parse.ParseServer;
 import main.screens.main_screen.MainScreen;
 import main.screens.main_screen.RatingPrompt;
-import remember_lib.Remember;
-
-import java.io.Serializable;
 
 public class UserTracker implements Serializable {
 

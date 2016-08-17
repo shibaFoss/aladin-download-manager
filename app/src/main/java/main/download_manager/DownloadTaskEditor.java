@@ -8,18 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import async_job.AsyncJob;
-import async_job.AsyncJob.BackgroundJob;
-import async_job.AsyncJob.MainThreadJob;
-import main.app.App;
-import main.dialog_factory.FilePickerDialog;
-import main.dialog_factory.MessageBox;
-import main.dialog_factory.ProgressDialog;
-import main.screens.BaseScreen;
-import main.screens.main_screen.downloads_screen.DownloadRefreshLinker;
-import main.user_tracking.UserTracker;
-import main.utilities.NetworkUtils;
-import main.utilities.UiUtils;
+
 import net.fdm.R;
 
 import java.io.File;
@@ -29,8 +18,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 
-import static async_job.AsyncJob.doInBackground;
-import static async_job.AsyncJob.doInMainThread;
+import libs.async_job.AsyncJob;
+import libs.async_job.AsyncJob.BackgroundJob;
+import libs.async_job.AsyncJob.MainThreadJob;
+import main.app.App;
+import main.dialog_factory.FilePickerDialog;
+import main.dialog_factory.MessageBox;
+import main.dialog_factory.ProgressDialog;
+import main.screens.BaseScreen;
+import main.screens.main_screen.downloads_screen.DownloadRefreshLinker;
+import main.user_tracking.UserTracker;
+import main.utilities.NetworkUtils;
+import main.utilities.UiUtils;
+
+import static libs.async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInMainThread;
 import static main.utilities.DeviceTool.humanReadableSizeOf;
 import static main.utilities.DeviceTool.move;
 import static main.utilities.FileCatalog.getSubDirectoryBy;
@@ -95,47 +97,160 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         this.init();
     }
 
+    /**
+     * Generate a default download model object with it's default value.
+     */
+    private DownloadModel generateDefaultDownloadModel() {
+        DownloadModel model = new DownloadModel();
+        model.filePath = baseScreen.app.getUserSettings().getDownloadPath();
+        model.totalFileLength = SIZE_NOT_MEASURED;
+        model.uiProgressInterval = 1000 * baseScreen.app.getUserSettings().getProgressTimer();
+        model.bufferSize = baseScreen.app.getUserSettings().getBufferSize();
+        model.numberOfPart = baseScreen.app.getUserSettings().getDownloadPart();
+        model.isCatalogEnable = baseScreen.app.getUserSettings().isFileCatalog();
+        model.isAutoResumeEnable = baseScreen.app.getUserSettings().isAutoResume();
+        model.isTtsNotificationEnable = baseScreen.app.getUserSettings().isTtsNotification();
+        model.isSmartDownload = baseScreen.app.getUserSettings().isSmartDownload();
+        return model;
+    }
+
+    /**
+     * Initialize the entire class after being open for the first time.
+     */
+    private void init() {
+        dialog = UiUtils.generateNewDialog(baseScreen, R.layout.download_task_editor_dialog);
+        dialog.setCancelable(false);
+
+        fileSizePreview = (TextView) dialog.findViewById(R.id.name_file_size);
+        fileUrlEdit = (EditText) dialog.findViewById(R.id.url);
+        fileNameEdit = (EditText) dialog.findViewById(R.id.name);
+        downloadBnt = (TextView) dialog.findViewById(R.id.download);
+        cancelBnt = (TextView) dialog.findViewById(R.id.cancel_bnt);
+        pathSelectorBnt = (ImageView) dialog.findViewById(R.id.file_path);
+        advanceSettingBnt = (ImageView) dialog.findViewById(R.id.advance_setting);
+
+        setUrlTextChangeListener();
+
+        pathSelectorBnt.setOnClickListener(this);
+        advanceSettingBnt.setOnClickListener(this);
+        downloadBnt.setOnClickListener(this);
+        cancelBnt.setOnClickListener(this);
+    }
+
+    private void setUrlTextChangeListener() {
+        fileUrlEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                updateFileSize();
+            }
+        });
+    }
+
+    /**
+     * Update the file size of a valid url.
+     */
+    private void updateFileSize() {
+        if (isForceAssemble) return;
+
+        doInBackground(new BackgroundJob() {
+            @Override
+            public void doInBackground() {
+                isWaitingForFileSize = true;
+
+                try {
+                    if (app.getUserSettings().isUrlFilter()) {
+                        setFileSizeText("Filtering file url...");
+                        final String newRedirectedUrl = getOriginalRedirectedUrl(new URL(getFileUrl()));
+                        if (!newRedirectedUrl.equals("-1")) {
+                            AsyncJob.doInMainThread(new MainThreadJob() {
+                                @Override
+                                public void doInUIThread() {
+                                    changeFileUrl(newRedirectedUrl);
+                                }
+                            });
+                        }
+                    }
+                    isWaitingForFileSize = false;
+                } catch (IOException error) {
+                    error.printStackTrace();
+                    isWaitingForFileSize = false;
+                }
+
+                isWaitingForFileSize = true;
+                setFileSizeText("Waiting for file size...");
+
+                try {
+                    downloadModel.totalFileLength = NetworkUtils.getFileSize(new URL(getFileUrl()));
+                    String fileSizeInMb = humanReadableSizeOf(downloadModel.totalFileLength);
+                    if (fileSizeInMb.equals("-1B")) {
+                        fileSizeInMb = "Unknown File Size";
+                    }
+
+                    setFileSizeText(fileSizeInMb);
+
+                } catch (MalformedURLException error) {
+                    error.printStackTrace();
+                    setFileSizeText("Can't connect to the server");
+                }
+                isWaitingForFileSize = false;
+            }
+        });
+    }
+
+    /**
+     * Set the file size at the fileSizePreview field from the mainThread.
+     *
+     * @param text the text that to be shown on the fileSizePreview.
+     */
+    private void setFileSizeText(final String text) {
+        doInMainThread(new MainThreadJob() {
+            @Override
+            public void doInUIThread() {
+                fileSizePreview.setText(Html.fromHtml("File Size : " + "(" + "<b>" + text + "</b>" + ")"));
+            }
+        });
+    }
 
     public String getFileUrl() {
         return fileUrlEdit.getText().toString().trim();
     }
-
 
     public void setFileUrl(String url) {
         changeFileUrl(url);
         updateFileSize();
     }
 
-
     public void changeFileUrl(String url) {
         fileUrlEdit.setText(url.trim());
     }
-
 
     public String getFileName() {
         return fileNameEdit.getText().toString().trim();
     }
 
-
     public void setFileName(String name) {
         fileNameEdit.setText(name.trim());
     }
-
 
     public String getFilePath() {
         return downloadModel.filePath;
     }
 
-
     public void setFilePath(String filePath) {
         downloadModel.filePath = filePath.trim();
     }
 
-
     public Dialog getDialog() {
         return dialog;
     }
-
 
     /**
      * Show the downlaod task editor dialog.
@@ -162,7 +277,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         }
     }
 
-
     /**
      * Close the download task editor dialog.
      */
@@ -178,7 +292,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         }
     }
 
-
     /**
      * System call this method if user clicks any buttons.
      *
@@ -193,25 +306,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         else if (id == downloadBnt.getId()) downloadClick();
         else if (id == cancelBnt.getId()) close();
     }
-
-
-    /**
-     * Generate a default download model object with it's default value.
-     */
-    private DownloadModel generateDefaultDownloadModel() {
-        DownloadModel model = new DownloadModel();
-        model.filePath = baseScreen.app.getUserSettings().getDownloadPath();
-        model.totalFileLength = SIZE_NOT_MEASURED;
-        model.uiProgressInterval = 1000 * baseScreen.app.getUserSettings().getProgressTimer();
-        model.bufferSize = baseScreen.app.getUserSettings().getBufferSize();
-        model.numberOfPart = baseScreen.app.getUserSettings().getDownloadPart();
-        model.isCatalogEnable = baseScreen.app.getUserSettings().isFileCatalog();
-        model.isAutoResumeEnable = baseScreen.app.getUserSettings().isAutoResume();
-        model.isTtsNotificationEnable = baseScreen.app.getUserSettings().isTtsNotification();
-        model.isSmartDownload = baseScreen.app.getUserSettings().isSmartDownload();
-        return model;
-    }
-
 
     public void prepareForceAssemble(final DownloadModel downloadModel) {
         this.isForceAssemble = true;
@@ -238,7 +332,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         setFilePath(downloadModel.filePath);
     }
 
-
     /**
      * The function is used for replacing a old downloaded file link with a new one.
      */
@@ -258,31 +351,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         linkChanger.show();
     }
 
-
-    /**
-     * Initialize the entire class after being open for the first time.
-     */
-    private void init() {
-        dialog = UiUtils.generateNewDialog(baseScreen, R.layout.download_task_editor_dialog);
-        dialog.setCancelable(false);
-
-        fileSizePreview = (TextView) dialog.findViewById(R.id.name_file_size);
-        fileUrlEdit = (EditText) dialog.findViewById(R.id.url);
-        fileNameEdit = (EditText) dialog.findViewById(R.id.name);
-        downloadBnt = (TextView) dialog.findViewById(R.id.download);
-        cancelBnt = (TextView) dialog.findViewById(R.id.cancel_bnt);
-        pathSelectorBnt = (ImageView) dialog.findViewById(R.id.file_path);
-        advanceSettingBnt = (ImageView) dialog.findViewById(R.id.advance_setting);
-
-        setUrlTextChangeListener();
-
-        pathSelectorBnt.setOnClickListener(this);
-        advanceSettingBnt.setOnClickListener(this);
-        downloadBnt.setOnClickListener(this);
-        cancelBnt.setOnClickListener(this);
-    }
-
-
     private void openPathSelector() {
         FilePickerDialog filePickerDialog = new FilePickerDialog(baseScreen, getFilePath());
         filePickerDialog.onPathSelectListener = new FilePickerDialog.OnSelectListener() {
@@ -295,13 +363,11 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         filePickerDialog.show();
     }
 
-
     private void openAdvanceSetting() {
         DownloadTaskAdvanceEditor setting = new DownloadTaskAdvanceEditor(baseScreen, downloadModel);
         setting.isForceAssemble(isForceAssemble);
         setting.show();
     }
-
 
     @Deprecated
     private void setFileNameFromSuggestion() {
@@ -317,7 +383,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
             }
         }
     }
-
 
     private void downloadClick() {
         //if the program currently busy at calculating the file size from the server,
@@ -352,11 +417,9 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         }
     }
 
-
     private String getString(int moving_file_wait) {
         return baseScreen.getString(moving_file_wait);
     }
-
 
     private void forceAssemble(final ProgressDialog progressDialog) {
         showProgress(true, progressDialog, "");
@@ -425,7 +488,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         }
     }
 
-
     private void showProgress(final boolean willShow,
                               final ProgressDialog progressDialog, final String message) {
         doInMainThread(new MainThreadJob() {
@@ -438,18 +500,15 @@ public final class DownloadTaskEditor implements View.OnClickListener {
         });
     }
 
-
     private void normalDownload() {
         configureDownloadModel();
         validateNameAndDownload();
     }
 
-
     private void configureDownloadModel() {
         downloadModel.fileName = getFileName();
         downloadModel.fileUrl = getFileUrl();
     }
-
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void validateNameAndDownload() {
@@ -506,94 +565,6 @@ public final class DownloadTaskEditor implements View.OnClickListener {
             close();
         }
     }
-
-
-    private void setUrlTextChangeListener() {
-        fileUrlEdit.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
-            }
-
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-            }
-
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                updateFileSize();
-            }
-        });
-    }
-
-
-    /**
-     * Update the file size of a valid url.
-     */
-    private void updateFileSize() {
-        if (isForceAssemble) return;
-
-        doInBackground(new BackgroundJob() {
-            @Override
-            public void doInBackground() {
-                isWaitingForFileSize = true;
-
-                try {
-                    if (app.getUserSettings().isUrlFilter()) {
-                        setFileSizeText("Filtering file url...");
-                        final String newRedirectedUrl = getOriginalRedirectedUrl(new URL(getFileUrl()));
-                        if (!newRedirectedUrl.equals("-1")) {
-                            AsyncJob.doInMainThread(new MainThreadJob() {
-                                @Override
-                                public void doInUIThread() {
-                                    changeFileUrl(newRedirectedUrl);
-                                }
-                            });
-                        }
-                    }
-                    isWaitingForFileSize = false;
-                } catch (IOException error) {
-                    error.printStackTrace();
-                    isWaitingForFileSize = false;
-                }
-
-                isWaitingForFileSize = true;
-                setFileSizeText("Waiting for file size...");
-
-                try {
-                    downloadModel.totalFileLength = NetworkUtils.getFileSize(new URL(getFileUrl()));
-                    String fileSizeInMb = humanReadableSizeOf(downloadModel.totalFileLength);
-                    if (fileSizeInMb.equals("-1B")) {
-                        fileSizeInMb = "Unknown File Size";
-                    }
-
-                    setFileSizeText(fileSizeInMb);
-
-                } catch (MalformedURLException error) {
-                    error.printStackTrace();
-                    setFileSizeText("Can't connect to the server");
-                }
-                isWaitingForFileSize = false;
-            }
-        });
-    }
-
-
-    /**
-     * Set the file size at the fileSizePreview field from the mainThread.
-     *
-     * @param text the text that to be shown on the fileSizePreview.
-     */
-    private void setFileSizeText(final String text) {
-        doInMainThread(new MainThreadJob() {
-            @Override
-            public void doInUIThread() {
-                fileSizePreview.setText(Html.fromHtml("File Size : " + "(" + "<b>" + text + "</b>" + ")"));
-            }
-        });
-    }
-
 
     /**
      * Check either the given the url is a valid url or not.

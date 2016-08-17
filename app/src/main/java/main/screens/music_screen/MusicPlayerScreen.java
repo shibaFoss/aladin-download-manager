@@ -1,7 +1,6 @@
 package main.screens.music_screen;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -12,12 +11,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import main.screens.BaseScreen;
-import main.screens.music_screen.AudioManager.MusicPreparedListener;
-import main.screens.music_screen.AudioManager.MusicProgressListener;
+
 import net.fdm.R;
 
 import java.io.File;
+
+import main.screens.BaseScreen;
+import main.screens.music_screen.AudioManager.MusicPreparedListener;
+import main.screens.music_screen.AudioManager.MusicProgressListener;
 
 import static android.graphics.BitmapFactory.decodeByteArray;
 import static main.utilities.TimeUtility.calculateTime;
@@ -33,6 +34,7 @@ public class MusicPlayerScreen extends BaseScreen
     public TextView songName, songArtist, currentTime, totalTime;
     public ImageView albumImage, albumImageBig;
     public SeekBar seekBar;
+    int seekPosition = 0;
 
     @Override
     public int getLayout() {
@@ -40,13 +42,10 @@ public class MusicPlayerScreen extends BaseScreen
     }
 
     @Override
-    public void onLayoutLoad() {
-        init();
-    }
-
-    @Override
     public void onAfterLayoutLoad() {
         try {
+            init();
+
             //get the intended file path.
             String audioFilePath = getIntendedAudioFilePath();
             if (audioFilePath != null) {
@@ -66,33 +65,9 @@ public class MusicPlayerScreen extends BaseScreen
         }
     }
 
-    //Generate a AudioInfo object with all the information of the
-    //audio file.
-    private AudioInfo generateAudioInfo(String audioFilePath) {
-        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-        retriever.setDataSource(audioFilePath);
-
-        //get the information of the audio file.
-        String name = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-        String artist = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-        String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
-        byte[] coverPicByte = retriever.getEmbeddedPicture();
-
-        //make a audio info object, so that we can send this for execute various
-        //operation later.
-        AudioInfo audioInfo = new AudioInfo();
-        audioInfo.songName = name;
-        audioInfo.songArtist = artist;
-        audioInfo.filePath = audioFilePath;
-        audioInfo.coverImage = coverPicByte;
-        audioInfo.audioDuration = Integer.parseInt(duration);
-
-        if (audioInfo.songName.length() < 1) {
-            audioInfo.songName = new File(audioFilePath).getName();
-            audioInfo.songArtist = "Unknown";
-        }
-
-        return audioInfo;
+    @Override
+    public void onExitScreen() {
+        finish();
     }
 
     @Override
@@ -118,21 +93,6 @@ public class MusicPlayerScreen extends BaseScreen
         }
     }
 
-    @Override
-    public void onExitScreen() {
-        finish();
-    }
-
-    @Override
-    public void onClearMemory() {
-        //todo : nothing to do here.
-    }
-
-    @Override
-    public void onScreenOptionChange(Configuration configuration) {
-        //todo : nothing to do here.
-    }
-
     /**
      * This method is called when the media player finishes its buffer loading.
      */
@@ -156,30 +116,6 @@ public class MusicPlayerScreen extends BaseScreen
             }
 
             seekBar.setMax(audioInfo.audioDuration);
-        }
-    }
-
-    /**
-     * This method is called when the media player updates its progress status.
-     * the progress interval time is 1 sec.
-     */
-    @Override
-    public void onProgressUpdate(AudioManager audioManager) {
-        MediaPlayer mediaPlayer = audioManager.getMediaPlayer();
-        if (mediaPlayer != null) {
-            AudioInfo audioInfo = audioManager.getAudioInfo();
-            if (audioInfo != null) {
-                int currentProgress = mediaPlayer.getCurrentPosition();
-                currentTime.setText((calculateTime(currentProgress)));
-                seekBar.setProgress(currentProgress);
-            }
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == playButton.getId()) {
-            toggleAudioPlay();
         }
     }
 
@@ -220,6 +156,59 @@ public class MusicPlayerScreen extends BaseScreen
         }
     }
 
+    //Generate a AudioInfo object with all the information of the
+    //audio file.
+    private AudioInfo generateAudioInfo(String audioFilePath) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(audioFilePath);
+
+        //get the information of the audio file.
+        String name = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+        String artist = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+        String duration = retriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+        byte[] coverPicByte = retriever.getEmbeddedPicture();
+
+        //make a audio info object, so that we can send this for execute various
+        //operation later.
+        AudioInfo audioInfo = new AudioInfo();
+        audioInfo.songName = name;
+        audioInfo.songArtist = artist;
+        audioInfo.filePath = audioFilePath;
+        audioInfo.coverImage = coverPicByte;
+        audioInfo.audioDuration = Integer.parseInt(duration);
+
+        if (audioInfo.songName.length() < 1) {
+            audioInfo.songName = new File(audioFilePath).getName();
+            audioInfo.songArtist = "Unknown";
+        }
+
+        return audioInfo;
+    }
+
+    /**
+     * This method is called when the media player updates its progress status.
+     * the progress interval time is 1 sec.
+     */
+    @Override
+    public void onProgressUpdate(AudioManager audioManager) {
+        MediaPlayer mediaPlayer = audioManager.getMediaPlayer();
+        if (mediaPlayer != null) {
+            AudioInfo audioInfo = audioManager.getAudioInfo();
+            if (audioInfo != null) {
+                int currentProgress = mediaPlayer.getCurrentPosition();
+                currentTime.setText((calculateTime(currentProgress)));
+                seekBar.setProgress(currentProgress);
+            }
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId() == playButton.getId()) {
+            toggleAudioPlay();
+        }
+    }
+
     private void toggleAudioPlay() {
         AudioManager audioManager = app.getAudioManager();
         MediaPlayer mediaPlayer = audioManager.getMediaPlayer();
@@ -234,8 +223,6 @@ public class MusicPlayerScreen extends BaseScreen
             }
         }
     }
-
-    int seekPosition = 0;
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int position, boolean b) {

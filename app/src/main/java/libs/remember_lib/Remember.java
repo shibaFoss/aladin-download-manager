@@ -1,4 +1,4 @@
-package remember_lib;
+package libs.remember_lib;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -67,14 +67,31 @@ public class Remember {
     }
 
     /**
-     * @return the singleton instance to use.
+     * Initializes this store with the given context.
      */
-    private static Remember getInstance() {
-        if (!INSTANCE.mWasInitialized) {
-            throw new RuntimeException(
-                    "remember_lib.Remember was not initialized! You must call remember_lib.Remember.initialize() before using this.");
-        }
-        return INSTANCE;
+    private void initWithContext(Context context, String sharedPrefsName) {
+        // Time ourselves
+        long start = SystemClock.uptimeMillis();
+
+        // Set vars
+        mAppContext = context.getApplicationContext();
+        mSharedPrefsName = sharedPrefsName;
+
+        // Read from shared prefs
+        SharedPreferences prefs = getSharedPreferences();
+        mData = new ConcurrentHashMap<String, Object>();
+        mData.putAll(prefs.getAll());
+        mWasInitialized = true;
+
+        long delta = SystemClock.uptimeMillis() - start;
+        Log.i(TAG, "remember_lib.Remember took " + delta + " ms to initialize");
+    }
+
+    /**
+     * Gets the shared preferences to use
+     */
+    private SharedPreferences getSharedPreferences() {
+        return mAppContext.getSharedPreferences(mSharedPrefsName, Context.MODE_PRIVATE);
     }
 
     /**
@@ -109,6 +126,17 @@ public class Remember {
                 }
             }
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+    }
+
+    /**
+     * @return the singleton instance to use.
+     */
+    private static Remember getInstance() {
+        if (!INSTANCE.mWasInitialized) {
+            throw new RuntimeException(
+                    "remember_lib.Remember was not initialized! You must call remember_lib.Remember.initialize() before using this.");
+        }
+        return INSTANCE;
     }
 
     /**
@@ -150,6 +178,77 @@ public class Remember {
      */
     public static Remember putFloat(final String key, final float value) {
         return getInstance().saveAsync(key, value, null);
+    }
+
+    /**
+     * Saves the given (key,value) pair to memory and (asynchronously) to disk.
+     *
+     * @param key      the key
+     * @param value    the value to put. This MUST be a type supported by SharedPreferences. Which is to say: one of (float,
+     *                 int, long, String, boolean).
+     * @param callback the callback to fire. The callback will be fired on the UI thread,
+     *                 and will be passed 'true' if successful, 'false' if not.
+     * @return this instance
+     */
+    private <T> Remember saveAsync(final String key, final T value, final Callback callback) {
+        // Put it in memory
+        mData.put(key, value);
+
+        // Save it to disk
+        new AsyncTask<Void, Void, Boolean>() {
+            @Override
+            protected Boolean doInBackground(Void... params) {
+                return saveToDisk(key, value);
+            }
+
+            @Override
+            protected void onPostExecute(Boolean success) {
+                // Fire the callback
+                if (callback != null) {
+                    callback.apply(success);
+                }
+            }
+        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+        return this;
+    }
+
+    /**
+     * Saves the given (key,value) pair to disk.
+     *
+     * @return true if the save-to-disk operation succeeded
+     */
+    private boolean saveToDisk(final String key, final Object value) {
+        boolean success = false;
+        synchronized (SHARED_PREFS_LOCK) {
+            // Save it to disk
+            SharedPreferences.Editor editor = getSharedPreferences().edit();
+            boolean didPut = true;
+            if (value instanceof Float) {
+                editor.putFloat(key, (Float) value);
+
+            } else if (value instanceof Integer) {
+                editor.putInt(key, (Integer) value);
+
+            } else if (value instanceof Long) {
+                editor.putLong(key, (Long) value);
+
+            } else if (value instanceof String) {
+                editor.putString(key, (String) value);
+
+            } else if (value instanceof Boolean) {
+                editor.putBoolean(key, (Boolean) value);
+
+            } else {
+                didPut = false;
+            }
+
+            if (didPut) {
+                success = editor.commit();
+            }
+        }
+
+        return success;
     }
 
     /**
@@ -240,6 +339,19 @@ public class Remember {
     }
 
     /**
+     * Gets the value mapped by the given key, casted to the given class. If the value doesn't exist or isn't of the
+     * right class, return null instead.
+     */
+    private <T> T get(String key, Class<T> clazz) {
+        Object value = mData.get(key);
+        T castedObject = null;
+        if (clazz.isInstance(value)) {
+            castedObject = clazz.cast(value);
+        }
+        return castedObject;
+    }
+
+    /**
      * Gets an int with the given key. Defers to the fallback value if the mapping didn't exist, wasn't an int,
      * or was null.
      */
@@ -282,118 +394,6 @@ public class Remember {
      */
     public static boolean containsKey(String key) {
         return getInstance().mData.containsKey(key);
-    }
-
-    /**
-     * Initializes this store with the given context.
-     */
-    private void initWithContext(Context context, String sharedPrefsName) {
-        // Time ourselves
-        long start = SystemClock.uptimeMillis();
-
-        // Set vars
-        mAppContext = context.getApplicationContext();
-        mSharedPrefsName = sharedPrefsName;
-
-        // Read from shared prefs
-        SharedPreferences prefs = getSharedPreferences();
-        mData = new ConcurrentHashMap<String, Object>();
-        mData.putAll(prefs.getAll());
-        mWasInitialized = true;
-
-        long delta = SystemClock.uptimeMillis() - start;
-        Log.i(TAG, "remember_lib.Remember took " + delta + " ms to initialize");
-    }
-
-    /**
-     * Gets the shared preferences to use
-     */
-    private SharedPreferences getSharedPreferences() {
-        return mAppContext.getSharedPreferences(mSharedPrefsName, Context.MODE_PRIVATE);
-    }
-
-    /**
-     * Saves the given (key,value) pair to disk.
-     *
-     * @return true if the save-to-disk operation succeeded
-     */
-    private boolean saveToDisk(final String key, final Object value) {
-        boolean success = false;
-        synchronized (SHARED_PREFS_LOCK) {
-            // Save it to disk
-            SharedPreferences.Editor editor = getSharedPreferences().edit();
-            boolean didPut = true;
-            if (value instanceof Float) {
-                editor.putFloat(key, (Float) value);
-
-            } else if (value instanceof Integer) {
-                editor.putInt(key, (Integer) value);
-
-            } else if (value instanceof Long) {
-                editor.putLong(key, (Long) value);
-
-            } else if (value instanceof String) {
-                editor.putString(key, (String) value);
-
-            } else if (value instanceof Boolean) {
-                editor.putBoolean(key, (Boolean) value);
-
-            } else {
-                didPut = false;
-            }
-
-            if (didPut) {
-                success = editor.commit();
-            }
-        }
-
-        return success;
-    }
-
-    /**
-     * Saves the given (key,value) pair to memory and (asynchronously) to disk.
-     *
-     * @param key      the key
-     * @param value    the value to put. This MUST be a type supported by SharedPreferences. Which is to say: one of (float,
-     *                 int, long, String, boolean).
-     * @param callback the callback to fire. The callback will be fired on the UI thread,
-     *                 and will be passed 'true' if successful, 'false' if not.
-     * @return this instance
-     */
-    private <T> Remember saveAsync(final String key, final T value, final Callback callback) {
-        // Put it in memory
-        mData.put(key, value);
-
-        // Save it to disk
-        new AsyncTask<Void, Void, Boolean>() {
-            @Override
-            protected Boolean doInBackground(Void... params) {
-                return saveToDisk(key, value);
-            }
-
-            @Override
-            protected void onPostExecute(Boolean success) {
-                // Fire the callback
-                if (callback != null) {
-                    callback.apply(success);
-                }
-            }
-        }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
-        return this;
-    }
-
-    /**
-     * Gets the value mapped by the given key, casted to the given class. If the value doesn't exist or isn't of the
-     * right class, return null instead.
-     */
-    private <T> T get(String key, Class<T> clazz) {
-        Object value = mData.get(key);
-        T castedObject = null;
-        if (clazz.isInstance(value)) {
-            castedObject = clazz.cast(value);
-        }
-        return castedObject;
     }
 
     /**

@@ -1,13 +1,14 @@
 package main.download_manager;
 
 import android.util.Log;
-import async_job.AsyncJob;
-import main.data_holder.BaseWritableObject;
 
 import java.io.File;
 import java.io.Serializable;
 
-import static async_job.AsyncJob.doInBackground;
+import libs.async_job.AsyncJob;
+import main.data_holder.BaseWritableObject;
+
+import static libs.async_job.AsyncJob.doInBackground;
 import static main.settings.UserSettings.downloadCachePath;
 import static main.utilities.DeviceTool.mkdirs;
 

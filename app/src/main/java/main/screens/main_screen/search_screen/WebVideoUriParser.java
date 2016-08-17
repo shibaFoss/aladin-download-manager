@@ -4,13 +4,14 @@ import android.content.DialogInterface;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import libs.remember_lib.Remember;
 import main.dialog_factory.YesNoDialog;
 import main.key_database.KeyStore;
 import main.screens.main_screen.MainScreen;
 import main.utilities.FileCatalog;
-import remember_lib.Remember;
-
-import java.util.ArrayList;
 
 import static android.webkit.URLUtil.guessFileName;
 import static java.net.URLDecoder.decode;
@@ -18,18 +19,15 @@ import static java.net.URLDecoder.decode;
 @SuppressWarnings({"FieldCanBeLocal", "unused"})
 public class WebVideoUriParser implements View.OnClickListener {
 
-    private CustomWebClient webClient;
-    private WebEngine webEngine;
-    private MainScreen mainScreen;
-
-    //The total resource uris that a single web page throws are
-    //stored in this array list.
-    private ArrayList<String> resourceList = new ArrayList<>();
-
     //The variable is useful to know if the system currently showing the youtube
     // alert to the  user.
     public boolean isYoutubeAlertShowing = false;
-
+    private CustomWebClient webClient;
+    private WebEngine webEngine;
+    private MainScreen mainScreen;
+    //The total resource uris that a single web page throws are
+    //stored in this array list.
+    private ArrayList<String> resourceList = new ArrayList<>();
     //Every time web_view get touched this timer get started for 1.5 sec
     //when the timer get finished it automatically starts the actual url inspection function.
     private CountDownTimer timer;
@@ -44,10 +42,6 @@ public class WebVideoUriParser implements View.OnClickListener {
         this.mainScreen = webEngine.searchScreen.getMainScreen();
         webEngine.searchScreen.openButton.setOnClickListener(this);
         webEngine.searchScreen.clearButton.setOnClickListener(this);
-    }
-
-    public ArrayList<String> getResourceList() {
-        return this.resourceList;
     }
 
     public synchronized void addUrlResource(final String resourceUrl) {
@@ -79,6 +73,14 @@ public class WebVideoUriParser implements View.OnClickListener {
         };
     }
 
+    private boolean isVideoResourceUrl(String resourceUrl) {
+        for (String res : getWantedResources()) {
+            if (resourceUrl.startsWith(res))
+                return true;
+        }
+        return isVideo(guessFileName(resourceUrl, null, null));
+    }
+
     private String[] getWantedResources() {
         return new String[]{
                 "http://player.vimeo.com/play", "https://player.vimeo.com/play"
@@ -91,14 +93,6 @@ public class WebVideoUriParser implements View.OnClickListener {
                 return true;
 
         return false;
-    }
-
-    private boolean isVideoResourceUrl(String resourceUrl) {
-        for (String res : getWantedResources()) {
-            if (resourceUrl.startsWith(res))
-                return true;
-        }
-        return isVideo(guessFileName(resourceUrl, null, null));
     }
 
     public void startWebUrlInspectionTimer() {
@@ -146,7 +140,6 @@ public class WebVideoUriParser implements View.OnClickListener {
         }
     }
 
-
     private void initTimer() {
         timer = new CountDownTimer(1000, 500) {
             @Override
@@ -175,6 +168,10 @@ public class WebVideoUriParser implements View.OnClickListener {
         }
     }
 
+    public ArrayList<String> getResourceList() {
+        return this.resourceList;
+    }
+
     @Override
     public void onClick(View view) {
         if (view.getId() == webEngine.searchScreen.openButton.getId()) {
@@ -184,17 +181,17 @@ public class WebVideoUriParser implements View.OnClickListener {
         }
     }
 
-    private void clearResourceArray() {
-        getResourceList().clear();
-        webEngine.searchScreen.bottomLayout.setVisibility(View.GONE);
-    }
-
     private void openVideos() {
         if (getResourceList().size() > 0) {
             if (!webEngine.getCurrentWebUrl().contains("youtube.com")) {
                 new Videos(webEngine.searchScreen, resourcesAsArray()).show();
             }
         }
+    }
+
+    private void clearResourceArray() {
+        getResourceList().clear();
+        webEngine.searchScreen.bottomLayout.setVisibility(View.GONE);
     }
 
     private String[] resourcesAsArray() {

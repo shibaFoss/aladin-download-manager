@@ -3,9 +3,6 @@ package main.download_manager;
 import android.content.Context;
 import android.os.Vibrator;
 import android.widget.Toast;
-import async_job.AsyncJob;
-import main.app.App;
-import main.utilities.LogHelper;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +11,13 @@ import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import static async_job.AsyncJob.*;
+import libs.async_job.AsyncJob;
+import main.app.App;
+import main.utilities.LogHelper;
+
+import static libs.async_job.AsyncJob.BackgroundJob;
+import static libs.async_job.AsyncJob.MainThreadJob;
+import static libs.async_job.AsyncJob.doInBackground;
 import static main.utilities.NetworkUtils.isNetworkAvailable;
 import static main.utilities.NetworkUtils.isWifiEnabled;
 
@@ -55,20 +58,6 @@ public abstract class DownloadPart {
     }
 
     /**
-     * Get the original file that will be used for downloading.
-     *
-     * @return download destination file.
-     */
-    public abstract File getOriginalFile();
-
-    /**
-     * Get the download file ur.
-     *
-     * @return the Url string.
-     */
-    public abstract String getFileUrl();
-
-    /**
      * Initialize the class with necessary information.
      *
      * @param partNumber the part number of the class
@@ -89,11 +78,30 @@ public abstract class DownloadPart {
         initializeDownloadedByte(partNumber, chunkSize);
     }
 
-    public void setToDefault(DownloadPart downloadPart) {
-        downloadPart.isNetworkConnectionBroke = false;
-        downloadPart.isTerminated = false;
-        downloadPart.isOnlyWifiSettingEnabled = false;
-        downloadPart.isDownloadCanceled = false;
+    /**
+     * Get the download file ur.
+     *
+     * @return the Url string.
+     */
+    public abstract String getFileUrl();
+
+    /**
+     * Get the original file that will be used for downloading.
+     *
+     * @return download destination file.
+     */
+    public abstract File getOriginalFile();
+
+    /**
+     * The Function gets the downloaded byte history from the download model.
+     */
+    private void initializeDownloadedByte(int partNumber, long chunkSize) {
+        DownloadModel downloadModel = downloadTask.model;
+
+        if (downloadModel.downloadPartTotalByteWrite != null) {
+            downloadedByte = downloadModel.downloadPartTotalByteWrite[partNumber];
+            downloadPercentage = (int) ((downloadedByte * 100) / chunkSize);
+        }
     }
 
     /**
@@ -114,12 +122,11 @@ public abstract class DownloadPart {
         });
     }
 
-    /**
-     * Cancel the download manually.
-     */
-    public void cancelDownload() {
-        this.isDownloadCanceled = true;
-        this.downloadStatus = DownloadStatus.CANCELED;
+    public void setToDefault(DownloadPart downloadPart) {
+        downloadPart.isNetworkConnectionBroke = false;
+        downloadPart.isTerminated = false;
+        downloadPart.isOnlyWifiSettingEnabled = false;
+        downloadPart.isDownloadCanceled = false;
     }
 
     /**
@@ -139,15 +146,15 @@ public abstract class DownloadPart {
     }
 
     /**
-     * The Function gets the downloaded byte history from the download model.
+     * Cancel the download manually.
      */
-    private void initializeDownloadedByte(int partNumber, long chunkSize) {
-        DownloadModel downloadModel = downloadTask.model;
+    public void cancelDownload() {
+        this.isDownloadCanceled = true;
+        this.downloadStatus = DownloadStatus.CANCELED;
+    }
 
-        if (downloadModel.downloadPartTotalByteWrite != null) {
-            downloadedByte = downloadModel.downloadPartTotalByteWrite[partNumber];
-            downloadPercentage = (int) ((downloadedByte * 100) / chunkSize);
-        }
+    private void updateDownloadStatus(int statusCode) {
+        this.downloadStatus = statusCode;
     }
 
     /**
@@ -254,12 +261,8 @@ public abstract class DownloadPart {
         });
     }
 
-    private void terminateDownloadForOnlyViaWifiSettings() {
-        if (!isWifiEnabled(downloadTask.getContext())) {
-            vibrator.vibrate(20);
-            Toast.makeText(downloadTask.getContext(), "Only via Wifi is turned on.", Toast.LENGTH_SHORT).show();
-            downloadTask.cancelDownload();
-        }
+    private String generateConnectionRange() {
+        return "bytes=" + (startPoint + downloadedByte) + "-";
     }
 
     private void configureConnection(HttpURLConnection connection, String range) throws IOException {
@@ -268,12 +271,12 @@ public abstract class DownloadPart {
         connection.setConnectTimeout(MAX_HTTP_READING_TIMEOUT);
     }
 
-    private String generateConnectionRange() {
-        return "bytes=" + (startPoint + downloadedByte) + "-";
-    }
-
-    private void updateDownloadStatus(int statusCode) {
-        this.downloadStatus = statusCode;
+    private void terminateDownloadForOnlyViaWifiSettings() {
+        if (!isWifiEnabled(downloadTask.getContext())) {
+            vibrator.vibrate(20);
+            Toast.makeText(downloadTask.getContext(), "Only via Wifi is turned on.", Toast.LENGTH_SHORT).show();
+            downloadTask.cancelDownload();
+        }
     }
 
     public interface DownloadStatusListener {

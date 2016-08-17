@@ -9,12 +9,13 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.TextView;
-import main.key_database.KeyStore;
-import main.utilities.URLUtility;
-import remember_lib.Remember;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+
+import libs.remember_lib.Remember;
+import main.key_database.KeyStore;
+import main.utilities.URLUtility;
 
 public class WebEngine {
 

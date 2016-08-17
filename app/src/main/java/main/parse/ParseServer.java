@@ -2,8 +2,17 @@ package main.parse;
 
 import android.content.Context;
 import android.util.Log;
-import async_job.AsyncJob.BackgroundJob;
-import com.parse.*;
+
+import com.parse.FunctionCallback;
+import com.parse.Parse;
+import com.parse.ParseCloud;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+
+import java.util.Map;
+
+import libs.async_job.AsyncJob.BackgroundJob;
+import libs.remember_lib.Remember;
 import main.app.App;
 import main.download_manager.DownloadModel;
 import main.download_manager.DownloadTools;
@@ -11,11 +20,8 @@ import main.utilities.DeviceTool;
 import main.utilities.DeviceUuidFactory;
 import main.utilities.LogHelper;
 import main.utilities.UserEmailFetcher;
-import remember_lib.Remember;
 
-import java.util.Map;
-
-import static async_job.AsyncJob.doInBackground;
+import static libs.async_job.AsyncJob.doInBackground;
 
 public class ParseServer {
 

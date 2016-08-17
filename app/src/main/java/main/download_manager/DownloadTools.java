@@ -1,12 +1,12 @@
 package main.download_manager;
 
-import async_job.AsyncJob;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DecimalFormat;
+
+import libs.async_job.AsyncJob;
 
 public final class DownloadTools {
 

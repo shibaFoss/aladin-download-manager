@@ -1,4 +1,4 @@
-package async_job;
+package libs.async_job;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -104,19 +104,6 @@ public class AsyncJob<TaskResult> {
         }
     }
 
-    /**
-     * Cancels the AsyncJob interrupting the inner thread.
-     */
-    public void cancel() {
-        if (actionInBackground != null) {
-            if (executorService != null) {
-                asyncFutureTask.cancel(true);
-            } else {
-                asyncThread.interrupt();
-            }
-        }
-    }
-
     private void onResult() {
         if (actionOnMainThread != null) {
             uiHandler.post(new Runnable() {
@@ -134,6 +121,19 @@ public class AsyncJob<TaskResult> {
 
     public void setExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
+    }
+
+    /**
+     * Cancels the AsyncJob interrupting the inner thread.
+     */
+    public void cancel() {
+        if (actionInBackground != null) {
+            if (executorService != null) {
+                asyncFutureTask.cancel(true);
+            } else {
+                asyncThread.interrupt();
+            }
+        }
     }
 
     public BackgroundAction getBackgroundAction() {
