@@ -390,5 +390,6 @@
     <string name="website">Website</string>
     <string name="project_website">Project website</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="power_off">Power Off</string>
 
 </resources>

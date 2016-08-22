@@ -17,7 +17,6 @@ import main.app.App;
 import main.download_manager.DownloadModel;
 import main.download_manager.DownloadTools;
 import main.utilities.DeviceTool;
-import main.utilities.DeviceUuidFactory;
 import main.utilities.LogHelper;
 import main.utilities.UserEmailFetcher;
 
@@ -55,7 +54,6 @@ public class ParseServer {
 
             ParseObject parseObject = new ParseObject("DownloadTracking");
             parseObject.put("Email", (email != null ? email[2] : ""));
-            parseObject.put("DeviceId", new DeviceUuidFactory(context).getDeviceUuid());
             parseObject.put("DeviceName", DeviceTool.getDeviceName());
             parseObject.put("NetworkProvider", DeviceTool.getServiceProvider(context));
 

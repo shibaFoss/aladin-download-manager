@@ -40,7 +40,7 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
 
     @Override
     protected int getScreenLayout() {
-        return R.layout.setting_screen;
+        return R.layout.screen_settings;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class SettingScreen extends BaseNestedScreen implements View.OnClickListe
 
     private void init() {
         this.moreSettingClickHandler = new MoreSettingClickHandler(this);
-        this.exitButton = (ImageButton) layoutView.findViewById(R.id.power_off);
+        this.exitButton = (ImageButton) layoutView.findViewById(R.id.bnt_power_off);
 
         initDownloadSettings();
         initToggleButtons();

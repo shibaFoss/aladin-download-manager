@@ -5,22 +5,22 @@
                 android:layout_height="match_parent">
 
     <include
-            android:id="@+id/title_layout_root"
-            layout="@layout/home_screen_action_bar_layout"/>
+        android:id="@+id/action_bar_layout"
+        layout="@layout/home_screen_action_bar_layout"/>
 
 
     <ImageView
-            android:id="@+id/shadow_under_title_layout_root"
-            android:layout_below="@+id/title_layout_root"
-            android:background="@drawable/tool_bar_drop_down"
-            android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:contentDescription="@string/border"/>
+        android:id="@+id/shadow_under_action_bar"
+        android:layout_below="@+id/action_bar_layout"
+        android:background="@drawable/tool_bar_drop_down"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:contentDescription="@string/border"/>
 
     <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_below="@id/title_layout_root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        android:id="@+id/view_pager"
+        android:layout_below="@id/action_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

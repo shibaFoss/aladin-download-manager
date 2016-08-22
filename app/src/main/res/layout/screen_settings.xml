@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/action_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/action_bar_height"
+        android:background="?attr/colorPrimary">
+
+        <TextView
+            android:id="@+id/txt_action_bar_title"
+            style="@style/style_txt_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/settings"
+            android:textColor="@color/white"
+            tools:ignore="RelativeOverlap"/>
+
+        <ImageButton
+            android:id="@+id/bnt_power_off"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_button_press"
+            android:contentDescription="@string/power_off"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/ic_action_exit_to_app"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/setting_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/action_bar_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/downloads_settings"/>
+
+            <LinearLayout
+                android:id="@+id/root_setting_layer_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp_16"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_border_deep"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/share_via_bluetooth"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_bluetooth"
+
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_bluetooth"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/share_via_bluetooth"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/invite_friends"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_share"
+
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_share"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/invite_friends"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/feedback"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_feedback"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_feedback"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/feedback"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/request_feature"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_request_feature"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_request_feature"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/request_feature"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rate_us"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_star"
+
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_star"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/rate_us"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/about_us"
+                        style="@style/style_txt_dialog_bnt"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_about_us"
+                        android:drawablePadding="@dimen/dp_10"
+                        android:drawableStart="@drawable/ic_about_us"
+
+                        android:gravity="center_vertical"
+
+                        android:padding="@dimen/dp_5"
+                        android:text="@string/about_us"
+                        android:textColor="@color/black_light"
+                        />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_border_deep"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/action_bar_layout"
+        android:background="@drawable/tool_bar_drop_down"
+        android:contentDescription="@string/border"/>
+
+</RelativeLayout>
